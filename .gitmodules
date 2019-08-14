@@ -2,6 +2,3 @@
 	path = public
 	url = git@github.com:HaoboGu/haobogu.github.io.git
 	branch = master
-[submodule "themes/hugo-nuo"]
-	path = themes/hugo-nuo
-	url = git@github.com:laozhu/hugo-nuo.git
