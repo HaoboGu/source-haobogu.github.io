@@ -5,8 +5,6 @@ tags: ["tagA", "tagB"]
 date: {{ .Date }}
 ---
 
-Summary here
-
 <!--more-->
 
-Content here
+

@@ -2,6 +2,7 @@ baseURL = "https://haobogu.github.io"
 languageCode = "en"
 title = "Haobo's Blog"
 theme = "hugo-nuo"
+hasCJKLanguage = true
 enableRobotsTXT = true
 PygmentsCodeFences = true
 canonifyurls = true
@@ -40,7 +41,7 @@ canonifyurls = true
   bg = "images/grey-prism.svg"
   avatar = "images/avatar.png"
   seotitle = "Haobo's Blog"
-  subtitle = "Home for my notes and thoughts"
+  subtitle = "Notes & Thoughts"
   description = "Note taking & archiving"
   paginate = 10
 
