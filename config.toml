@@ -35,6 +35,12 @@ canonifyurls = true
   identifier = "tags"
   url = "/tags/"
 
+[[menu.main]]
+  name = "About"
+  weight = 40
+  identifier = "about"
+  url = "/about/"
+
 # Add your own params here
 [params]
   author = "Haobo Gu"
@@ -49,8 +55,8 @@ canonifyurls = true
   email = "haobogu@outlook.com"
   github = "HaoboGu"
   bilibili = "26705509"
+  linkedin = "浩波-顾-a71875126"
   # twitter = "twitter_username"
-  # linkedin = "linkedin_username"
   # weibo = "weibo_username"
   # wechat= "images/qrcode.jpg"  # Replace with your wechat qrcode image
   # facebook = "facebook_username"
