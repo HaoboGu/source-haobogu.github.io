@@ -5,6 +5,8 @@ tags: ["hugo", "note"]
 date: 2019-08-14T19:57:40+08:00
 ---
 
+Hugo installation and Github Pages configuration.
+
 <!--more-->
 
 # What's Hugo?
