@@ -1,8 +1,9 @@
 ---
 title: "{{ replace .TranslationBaseName "-" " " | title }}"
 author: "Haobo Gu"
-tags: ["tagA", "tagB"]
+tags: []
 date: {{ .Date }}
+draft: true
 ---
 
 <!--more-->
