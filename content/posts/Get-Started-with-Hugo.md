@@ -1,7 +1,7 @@
 ---
 title: "Get Started with Hugo"
 author: "Haobo Gu"
-tags: ["hugo", "note"]
+tags: [hugo]
 date: 2019-08-14T19:57:40+08:00
 ---
 
@@ -9,11 +9,11 @@ Hugo installation and Github Pages configuration.
 
 <!--more-->
 
-# What's Hugo?
+## What's Hugo?
 
 Hugo is a popular open-source static site generator. After my painful journey on trying Hexo and Jekyll, Hugo makes me happy.
 
-# Get Started
+## Get Started
 
 ### Install Hugo on Mac OS.
 

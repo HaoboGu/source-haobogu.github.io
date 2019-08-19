@@ -1,12 +1,11 @@
 ---
 title: "Alfred Workflow Basics"
 author: "Haobo Gu"
-tags: [Alfred]
+tags: [alfred]
 date: 2019-08-19T14:25:50.275944+08:00
 ---
 
 <!--more-->
-# Alfred Workflow Basics
 
 Before we start to develop an Alfred workflow, we should learn some basic concepts first. 
 

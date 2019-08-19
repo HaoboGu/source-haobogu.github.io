@@ -6,12 +6,13 @@ date: 2019-08-19T14:26:42.689638+08:00
 ---
 
 <!--more-->
-## SSH On Mac OS
+
+## Create SSH key
 
 First, create ssh key:
 
 ```shell
-ssh-keygen -t rsa -C "youmail@mail.com"
+ssh-keygen -t rsa -C "yourmail@mail.com"
 ```
 
 Then add the created private key to ssh-agent, and store it in keychain:
@@ -22,7 +23,7 @@ ssh-add -K ~/.ssh/id_rsa
 
 `-K` can make sure that the ssh key will always be valid after restart. You can use `ssh-add -l` to check added ssh keys
 
-### Config
+## Config
 
 We can use different ssh keys to connect different servers.
 
@@ -55,6 +56,6 @@ Host myhost3
 
 If the server is not in config file, the default ssh key is `~/.ssh/id_rsa`
 
-### Github setting
+## Github setting
 
 Please refer to [Github Help](https://help.github.com/en/articles/adding-a-new-ssh-key-to-your-github-account)

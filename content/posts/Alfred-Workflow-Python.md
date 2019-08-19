@@ -1,18 +1,14 @@
 ---
 title: "Alfred Workflow Python Development"
 author: "Haobo Gu"
-tags: [Alfred]
+tags: [alfred]
 date: 2019-08-19T11:33:02+08:00
 draft: true
 ---
 
 <!--more-->
 
-# Alfred Workflow Python
-
 Install Alfred workflow python develop toolkit: https://www.deanishe.net/alfred-workflow/installation.html
-
-
 
 ### Setting variables
 

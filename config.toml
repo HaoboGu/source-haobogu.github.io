@@ -5,6 +5,7 @@ theme = "hugo-nuo"
 hasCJKLanguage = true
 enableRobotsTXT = true
 PygmentsCodeFences = true
+pygmentsUseClasses=true
 canonifyurls = true
 
 [blackfriday]
@@ -53,6 +54,8 @@ smartypants = false
   subtitle = "Notes & Thoughts"
   description = "Note taking & archiving"
   paginate = 10
+  # Overrid theme styles in this file
+  customStyle = "styles/custom.scss"
 
   # Choose your social networks
   email = "haobogu@outlook.com"

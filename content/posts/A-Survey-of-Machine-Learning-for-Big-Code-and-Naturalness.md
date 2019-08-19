@@ -6,8 +6,6 @@ date: 2019-08-16T17:38:34.723004+08:00
 ---
 
 <!--more-->
-# A Survey of Machine Learning for Big Code and Naturalness
-
 ## Introduction
 
 Software engineering(SE) and programming languages(PL) should make the transition just like NLP: from brittle rule-based expert systems to statistical methods and machine learning techniques. 
