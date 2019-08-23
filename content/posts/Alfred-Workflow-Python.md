@@ -2,7 +2,7 @@
 title: "Alfred Workflow Python Development"
 author: "Haobo Gu"
 tags: [alfred]
-date: 2019-08-19T11:33:02+08:00
+date: 2019-08-20T11:33:02+08:00
 ---
 
 Learning Alfred workflow python sdk. 
