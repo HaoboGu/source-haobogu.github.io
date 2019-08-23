@@ -1,7 +1,7 @@
 ---
 title: "A Survey of Machine Learning for Big Code and Naturalness"
 author: "Haobo Gu"
-tags: ["paper note"]
+tags: ["paper note", research]
 toc: true
 date: 2019-08-16T17:38:34.723004+08:00
 ---

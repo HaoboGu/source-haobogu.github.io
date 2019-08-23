@@ -53,7 +53,7 @@ If we want to pass more information to downstream, Alfred variable is what we ne
 
 There are two types of variables: general variable and environment variable. Alfred Python sdk provides difference methods to set different variables. What's more, variable setting is different in **run script** component and **script filter** component. 
 
-#### Set environment variable
+##### Set environment variable
 
 Alfred Python provides `set_config` in `workflow.util` to set environment variables. Here is the [API doc](https://www.deanishe.net/alfred-workflow/api/index.html?highlight=set_config#workflow.util.set_config), which is quite easy to understand and use.
 
@@ -67,7 +67,7 @@ set_config(var_name, var_value, bundleid, exportable=False)
 unset_config(var_name, bundleid)
 ```
 
-#### Set variables in script filter component
+##### Set variables in script filter component
 
 In the upstream script filter, `root variable` and `item variable` can be used to pass variables to downstream.
 
@@ -86,7 +86,7 @@ When an item is actioned, all variables in `arg` is passed as `{query}` to downs
 
 `title` and `subtitle` is the text appears in the alfred window.
 
-#### Set variables in run script component
+##### Set variables in run script component
 
 In run script component, `Variables` should be used to store and pass variables.
 
