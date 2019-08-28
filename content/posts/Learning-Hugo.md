@@ -3,8 +3,9 @@ title: "Learning Hugo(1)"
 author: "Haobo Gu"
 tags: [Hugo]
 date: 2019-08-23T15:35:00+08:00
-draft: true
 ---
+
+
 
 <!--more-->
 
@@ -12,22 +13,7 @@ draft: true
 
 The top level of content folder is `./content/`. Under this folder, the contents can be organized and nested at any level. The following is an example:
 
-```sh
-.
-└── content
-    ├── about
-    │   └── index.md  				// <- https://example.com/about/
-    ├── posts
-    │   ├── firstpost.md   		// <- https://example.com/posts/firstpost/
-    │		├── secondpost.md  		// <- https://example.com/posts/secondpost/
-    │   └── happy
-    │				├── ness.md  			// <- https://example.com/posts/happy/ness/
-    │       └── kittens       // <-- Section, because contains _index.md
-    │      			└── _index.md
-    └── quote
-        ├── first.md       		// <- https://example.com/quote/first/
-        └── second.md      		// <- https://example.com/quote/second/
-```
+![image-20190828171512051](http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-08-28-091512.png)
 
 The page origanization conforms to the content source organization. However, each type of pages has an ***index page***, which is the front page when you goes to this category. For instance, the index page of `tags` looks like: ![image-20190823154917184](http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-08-23-074917.png)
 
@@ -77,6 +63,24 @@ url: /blog/new-url/
 In the second case, the url will be changed to `baseUrl + /blog/new-url/`.
 
 For more information about url configuration, see [URL Management](https://gohugo.io/content-management/urls/)
+
+## Section
+
+A section is a collection of pages. Sections are organized under the `content/` folder. By default, all **first-level** folder under `content/` are sections. In deeper level, we can create a section by creating a folder with a `_index.md` file, which indicates that this folder is a section. 
+
+>  A **section** cannot be defined or overridden by a front matter parameter – it is strictly derived from the content organization structure.
+
+Hugo provides page variables:
+
+- `.CurrentSection`
+- `.FirstSection`
+- `.Parent`
+- `.Section`: First path element in the directory
+- `.Sections`: Sections below this content
+
+### Content Section vs Content Type
+
+Content section is a organization-level concept, while content type is the template of a page, such as draft, post, etc. 
 
 ## Config Markdown Renderer
 
