@@ -64,17 +64,21 @@ $$
 ## Position-wise Feed-Forward Layer
 
 这一层简称FFN，是对每一个位置的结果单独训练一个网络，因此叫"Position-wise"。FFN的结构也很简单：两个线性变换，其中一个是ReLU：
+
 $$
 FFN(x) = max(0, xW_1+b_1)W_2+b_2
 $$
+
 中间层的宽度是超参数$d_{ff}$，在论文中取值为2048
 
 ## Norm Layer
 
 Transformer中，Attention层和FFN层后面都加了一个Normalization：
+
 $$
 LayerNorm(x+Sublayer(x))
 $$
+
 其中，LayerNorm的方法见Hinton的[论文](https://arxiv.org/pdf/1607.06450.pdf)。
 
 ## Positional Encoding
@@ -124,9 +128,11 @@ Transformer-XL解决fixed-length context的方式是引入recurrent：对于每�
 公式中，$U_{1:L}$ 是绝对位置编码，$E_{s_\tau}$是embedding，$h_\tau$是隐状态
 
 所以，Transformer-XL引入了相对位置矩阵：
+
 $$
 R_i \in \mathbb{R}^{L_{max}\times d}
 $$
+
 这里，i是两个位置的相对距离，$L_{max}$是整个输入序列的最长长度，在实际计算中，i可以是从0到M+L-1的任何数字，M是记忆的长度，L是segment长度。
 
 在实际应用中，R是可以被提前计算出来的，使用vanilla transformer中的三角函数即可。
@@ -136,13 +142,17 @@ $$
 <img src="http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-09-080936.png" alt="image-20191009160936418"  />
 
 这个公式猛一看不好理解，回想一下原始的attention score的计算方式：
+
 $$
 Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d_k}})*V
 $$
+
 考虑进来原来的绝对位置编码U和线性变换矩阵W，有
+
 $$
 QK^T=(E+U)W_q\times ((K+U)W_k)^T
 $$
+
 那对于第i个query和第j个key来说，有
 
 <img src="http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-09-081458.png" alt="image-20191009161458108" style="zoom: 50%;" />
