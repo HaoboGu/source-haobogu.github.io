@@ -89,7 +89,7 @@ $$
 
 ![image-20191008170552138](http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-08-090552.png)
 
-这里，i是维度，pos是token的位置。所以，对于每个维度，位置编码的波长都是不同的。而对于相同的维度来说，$PE_{pos+k}$总是可以表示为$PE_{pos}$的线性函数。
+这里，i是维度，pos是token的位置。所以，对于每个维度，位置编码的波长都是不同的。而对于相同的维度来说， $PE_{pos+k}$ 总是可以表示为$PE_{pos}$的线性函数。
 
 ## Transformer的问题
 
