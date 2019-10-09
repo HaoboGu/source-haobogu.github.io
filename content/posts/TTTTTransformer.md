@@ -40,9 +40,11 @@ Multi-head attention的基础是Scaled Dot-Product Attention：
 ![image-20191008154145448](http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-08-074145.png)
 
 这里，输入有三个，Q代表query，K、V代表一个Key-Value对。用公式表示为：
+
 $$
 Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d_k}})*V
 $$
+
 所谓self-attention实际上就是Q、K、V三个是一样的。这里的Q、K、V都是多个单词embedding的矩阵。如果句子长度为128个token，embedding的长度$d_{model}=512$，那么左边的softmax输出的实际上就是128个权重向量，和value embedding相乘得到加了self-attention的结果。
 
 ### Multi-Head Attention
