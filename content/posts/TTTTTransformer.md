@@ -27,6 +27,10 @@ Google提出的基于self-attention的Transformer和Transformer-XL结构可以�
 3. Positional encoding
 4. LayerNorm
 
+需要注意的是，对于encoder和decoder，每个结构可以重叠N次，在论文里面N=6，即encoder叠了N层。这时，decoder的每一层拿到的K-V的输入都是encoder的最后一层的结果，即：
+
+![image-20191010201934160](http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-10-121934.png)
+
 
 
 ## Attention
@@ -47,6 +51,8 @@ $$
 
 所谓self-attention实际上就是Q、K、V三个是一样的。这里的Q、K、V都是多个单词embedding的矩阵。如果句子长度为128个token，embedding的长度$d\_{model}=512$，那么左边的softmax输出的实际上就是128个权重向量，和value embedding相乘得到加了self-attention的结果。
 
+可以简单理解为，self-attention是通过Q和K算出注意力需要放到哪些维度上，即权重向量，然后乘V得到加上attention之后的输出。
+
 ### Multi-Head Attention
 
 ![image-20191008164153020](http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-08-084336.png)
@@ -63,8 +69,11 @@ $$
 
 ## Position-wise Feed-Forward Layer
 
-这一层简称FFN，是对每一个位置的结果单独训练一个网络，因此叫"Position-wise"。FFN的结构也很简单：两个线性变换，其中一个是ReLU：
+这一层简称FFN，是对每一个位置的结果单独训练一个网络，位置和位置之间不共享参数，因此叫"Position-wise":
 
+![image-20191010201716753](http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-10-121717.png)
+
+FFN的结构也很简单：两个线性变换，其中一个是ReLU：
 $$
 FFN(x) = max(0, xW_1+b_1)W_2+b_2
 $$
@@ -194,20 +203,23 @@ def rel_multihead_attn(w, r, r_w_bias, r_r_bias, attn_mask, mems, d_model,
     rw_head_q = w_head_q + r_w_bias
     rr_head_q = w_head_q + r_r_bias
 
-   
+    # 计算(a)和(c)
     AC = tf.einsum('ibnd,jbnd->ijbn', rw_head_q, w_head_k)
-    # 这里的计算用了一个trick，使得BD的O(N^3)的计算量降到了O(N)，见论文appendix B
+    # 计算(b)和(d)，这里的计算用了一个trick，使得BD的O(N^3)的计算量降到了O(N)，见论文appendix B
     BD = tf.einsum('ibnd,jnd->ijbn', rr_head_q, r_head_k)
     BD = rel_shift(BD)
 
     # 对QK^T做scale
     attn_score = (AC + BD) * scale
+    # Mask
     attn_mask_t = attn_mask[:, :, None, None]
     attn_score = attn_score * (1 - attn_mask_t) - 1e30 * attn_mask_t
 
+    # Softmax + dropout
     attn_prob = tf.nn.softmax(attn_score, 1)
     attn_prob = tf.layers.dropout(attn_prob, dropatt, training=is_training)
 
+    # attention向量乘以V得到最终的结果
     attn_vec = tf.einsum('ijbn,jbnd->ibnd', attn_prob, w_head_v)
   ...
   ...
@@ -221,7 +233,17 @@ def rel_multihead_attn(w, r, r_w_bias, r_r_bias, attn_mask, mems, d_model,
 
 其中，n=1,...,N，$h\_\tau^0=E\_{s\_\tau}$，即第一层的h是embedding。
 
+## Reference
 
+1. Transformer: https://arxiv.org/abs/1706.03762 
+
+2. Transformer-XL: https://arxiv.org/abs/1901.02860
+
+3. The Annotated Transformer: https://nlp.seas.harvard.edu/2018/04/03/attention.html
+
+4. The Illustrated Transformer: http://jalammar.github.io/illustrated-transformer/
+
+   
 
 
 
