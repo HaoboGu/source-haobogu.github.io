@@ -89,9 +89,9 @@ Our first extension contains three parts actually:
   This is defined in `package.json`'s `activationEvents` field. After defining this, the user can enter `Hello World` to activate the extension.
 
   ```json
-  	"activationEvents": [
-  		"onCommand:extension.helloWorld"
-  	]
+  "activationEvents": [
+  	"onCommand:extension.helloWorld"
+  ]
   ```
 
 - `contributes.commands`
@@ -99,14 +99,14 @@ Our first extension contains three parts actually:
   This is also defined in `package.json`. This field is used to bind the command ID `extension.helloWorld` with keyword `Hello World`. With this we can use `Hello World` command in VSC's command window.
 
   ```json
-  	"contributes": {
-  		"commands": [
-  			{
-  				"command": "extension.helloWorld",
-  				"title": "Hello World"
-  			}
-  		]
-  	}
+  "contributes": {
+  	"commands": [
+  		{
+  			"command": "extension.helloWorld",
+  			"title": "Hello World"
+  		}
+  	]
+  }
   ```
 
 - `vscode.commands.registerCommand`
