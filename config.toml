@@ -56,6 +56,8 @@ smartypants = false
   paginate = 10
   # Overrid theme styles in this file
   customStyle = "styles/custom.scss"
+  custom_css = "styles/custom.scss"
+  googlefonts = "https://fonts.googleapis.com/css?family=Fira+Code|Fira+Mono|Roboto+Mono|Source+Sans+Pro|Source+Serif+Pro&display=swap"
 
   # Choose your social networks
   email = "haobogu@outlook.com"
