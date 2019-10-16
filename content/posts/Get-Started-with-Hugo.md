@@ -3,7 +3,7 @@ title: "Get Started with Hugo"
 author: "Haobo Gu"
 tags: [hugo]
 date: 2019-08-14T19:57:40+08:00
-summary: Hugo installation and Github Pages configuration.
+summary: Hugo installation and Github Pages configuration
 ---
 
 ## What's Hugo?

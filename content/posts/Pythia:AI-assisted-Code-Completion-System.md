@@ -3,7 +3,7 @@ title: "Pythia: AI Assisted Code Completion System"
 author: "Haobo Gu"
 tags: [paper-note, code-completion]
 date: 2019-09-04T17:59:37+08:00
-summary: As a part of Intellicode extension in Visual Studio Code, Pythia exploits large scale deep learning methods trained on extracted code context sequences from ASTs and achieves SOTA performance on Python code completion task. 
+summary: As a part of Intellicode extension in Visual Studio Code, Pythia exploits large scale deep learning methods trained on extracted code context sequences from ASTs and achieves SOTA performance on Python code completion task
 slug: "pythia-ai-assisted-code-completion-system"
 ---
 

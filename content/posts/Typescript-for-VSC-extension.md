@@ -3,7 +3,7 @@ title: "Typescript for VSC Extension"
 author: "Haobo Gu"
 tags: []
 date: 2019-10-14T15:35:26+08:00
-summary: 
+summary: 想要开发VS Code的插件，必须要熟悉TypeScript
 draft: true
 ---
 
