@@ -1,7 +1,7 @@
 ---
 title: "Language Server Protocol"
 author: "Haobo Gu"
-tags: [lsp, "language server protocol", "code completion", "type script"]
+tags: ["lsp", "language server protocol", "code completion", "type script"]
 date: 2019-10-25T14:18:50+08:00
 summary: Language Server Protocol(LSP) defines how the development tools and language servers communicate
 draft: false
