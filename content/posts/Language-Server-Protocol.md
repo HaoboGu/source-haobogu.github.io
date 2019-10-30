@@ -245,7 +245,6 @@ This request is sent from the client to the server to compute completion items a
 *Request*:
 
 - method: 'textDocument/completion'
-
 - params: `CompletionParams`
 
 ```typescript
@@ -299,10 +298,6 @@ export type CompletionTriggerKind = 1 | 2 | 3;
 
 - result:`CompletionItem[]` | `CompletionList` | `null`.
 - params: 
-
-
-
-
 
 ```typescript
 interface CompletionItem {
