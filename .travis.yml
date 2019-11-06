@@ -13,7 +13,8 @@ git:
     submodules: false
 # Use sed to replace the SSH URL with the public URL, then initialize submodules
 before_install:
-    - echo -e "\n\nmachine github.com\n  $GITHUB_TOKEN\n" >~/.netrc
+    - echo -e "\n\nmachine github.com\n  login $GITHUB_TOKEN\n" >~/.netrc
+    - cat ~/.netrc
       #- sed -i "s/git@github.com:/https:\/\/HaoboGu:$GITHUB_TOKEN@github.com\//" .gitmodules 
     - git submodule update --init --recursive
 
