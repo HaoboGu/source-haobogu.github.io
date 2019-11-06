@@ -4,14 +4,13 @@ author: "Haobo Gu"
 tags: ["lsp", "language server protocol", "code completion", "type script"]
 date: 2019-10-25T14:18:50+08:00
 summary: Language Server Protocol(LSP) defines how the development tools and language servers communicate
-draft: false
 ---
 
 ## Overview
 
 Language Server Protocol (LSP) defines how the development tools and language servers communicate. The development tool performs as a client while all computation is done in backend language server. In LSP, the communication uses `JSON-RPC` format.
 
-## How LSP works?
+## How LSP Works?
 
 The following image shows how LSP works:
 
