@@ -296,7 +296,6 @@ export type CompletionTriggerKind = 1 | 2 | 3;
 *Response*:
 
 - result:`CompletionItem[]` | `CompletionList` | `null`.
-- params: 
 
 ```typescript
 interface CompletionItem {
