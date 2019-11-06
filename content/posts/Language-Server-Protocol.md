@@ -180,7 +180,7 @@ Notifications and requests which start with `$/` are **protocol implementation d
 
 There are some examples for the actual protocol used in LSP
 
-### Server lifetime
+### Server Lifetime
 
 The lifetime of a server is managed by the client, that is, the client decides when to start and shutdown the server. 
 
