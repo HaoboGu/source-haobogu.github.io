@@ -13,7 +13,8 @@ git:
     submodules: false
 # Use sed to replace the SSH URL with the public URL, then initialize submodules
 before_install:
-    - sed -i "s/git@github.com:/https:\/\/HaoboGu:$GITHUB_TOKEN@github.com\//" .gitmodules 
+    - echo -e "\n\nmachine github.com\n  $GITHUB_TOKEN\n" >~/.netrc
+      #- sed -i "s/git@github.com:/https:\/\/HaoboGu:$GITHUB_TOKEN@github.com\//" .gitmodules 
     - git submodule update --init --recursive
 
 install:
@@ -24,11 +25,6 @@ install:
 script:
   # 运行hugo命令
   - hugo -t hugo-nuo
-
-env:
- global:
-   # Github Pages
-   - GH_REF: github.com/HaoboGu/haobogu.github.io.git
 
 deploy:
    provider: pages # 重要，指定这是一份github pages的部署配置
