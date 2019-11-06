@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Haobo&#39;s Blog</title>
+    <link>https://haobogu.github.io/post/</link>
+    <description>Recent content in Posts on Haobo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce.</copyright>
+    <lastBuildDate>Wed, 14 Aug 2019 17:48:52 +0800</lastBuildDate>
+    
+	<atom:link href="https://haobogu.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hello World</title>
+      <link>https://haobogu.github.io/post/hello-world/</link>
+      <pubDate>Wed, 14 Aug 2019 17:48:52 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/post/hello-world/</guid>
+      <description>Go 变量 类型 Go 的基本类型有
+bool string int int8 int16 int32 int64 uint uint8 uint16 uint32 uint64 uintptr byte rune float32 float64 complex64 complex128 变量声明 &amp;amp; 赋值 var用来声明一个变量列表，变量的类型在最后。如果有初始值，可以省略类型
+:=是声明变量并且赋值，可省略类型名（自动推断），如：
+b := false //布尔型 i := 1 //整型 f := 0.618 //浮点型 c := &amp;#39;a&amp;#39; //字符 s := &amp;#34;hello&amp;#34; //字符串 cp := 3+2i //复数 i := [3]int{1,2,3} //数组 :=相当于var var_name type = val。一般来说，上面的var语句中，当右边有值的时候，type可以忽略
+ :=只能用在函数内，var可用在函数外  对于Go，可以统一分组声明变量或者常量：
+var ( int_var int str_var string complex_var complex128 ) const ( int_const int str_const string ) 类型转换 - T(v)：</description>
+    </item>
+    
+  </channel>
+</rss>

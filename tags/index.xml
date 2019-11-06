@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Haobo&#39;s Blog</title>
+    <link>https://haobogu.github.io/tags/</link>
+    <description>Recent content in Tags on Haobo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 25 Oct 2019 14:18:50 +0800</lastBuildDate>
+    
+	<atom:link href="https://haobogu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>code completion</title>
+      <link>https://haobogu.github.io/tags/code-completion/</link>
+      <pubDate>Fri, 25 Oct 2019 14:18:50 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/code-completion/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>language server protocol</title>
+      <link>https://haobogu.github.io/tags/language-server-protocol/</link>
+      <pubDate>Fri, 25 Oct 2019 14:18:50 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/language-server-protocol/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lsp</title>
+      <link>https://haobogu.github.io/tags/lsp/</link>
+      <pubDate>Fri, 25 Oct 2019 14:18:50 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/lsp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>type script</title>
+      <link>https://haobogu.github.io/tags/type-script/</link>
+      <pubDate>Fri, 25 Oct 2019 14:18:50 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/type-script/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>extension</title>
+      <link>https://haobogu.github.io/tags/extension/</link>
+      <pubDate>Sat, 12 Oct 2019 17:09:33 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/extension/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>node.js</title>
+      <link>https://haobogu.github.io/tags/node.js/</link>
+      <pubDate>Sat, 12 Oct 2019 17:09:33 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/node.js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>typescript</title>
+      <link>https://haobogu.github.io/tags/typescript/</link>
+      <pubDate>Sat, 12 Oct 2019 17:09:33 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/typescript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vscode</title>
+      <link>https://haobogu.github.io/tags/vscode/</link>
+      <pubDate>Sat, 12 Oct 2019 17:09:33 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/vscode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nlp</title>
+      <link>https://haobogu.github.io/tags/nlp/</link>
+      <pubDate>Wed, 09 Oct 2019 15:06:33 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/nlp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>paper note</title>
+      <link>https://haobogu.github.io/tags/paper-note/</link>
+      <pubDate>Wed, 09 Oct 2019 15:06:33 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/paper-note/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>transformer</title>
+      <link>https://haobogu.github.io/tags/transformer/</link>
+      <pubDate>Wed, 09 Oct 2019 15:06:33 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/transformer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>“deep learning&#34;</title>
+      <link>https://haobogu.github.io/tags/deep-learning/</link>
+      <pubDate>Wed, 09 Oct 2019 15:06:33 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://haobogu.github.io/tags/hugo/</link>
+      <pubDate>Fri, 23 Aug 2019 15:35:00 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Graph Database</title>
+      <link>https://haobogu.github.io/tags/graph-database/</link>
+      <pubDate>Wed, 21 Aug 2019 19:22:24 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/graph-database/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gremlin</title>
+      <link>https://haobogu.github.io/tags/gremlin/</link>
+      <pubDate>Wed, 21 Aug 2019 19:22:24 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/gremlin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>TinkerPop</title>
+      <link>https://haobogu.github.io/tags/tinkerpop/</link>
+      <pubDate>Wed, 21 Aug 2019 19:22:24 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/tinkerpop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>alfred</title>
+      <link>https://haobogu.github.io/tags/alfred/</link>
+      <pubDate>Tue, 20 Aug 2019 11:33:02 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/alfred/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://haobogu.github.io/tags/linux/</link>
+      <pubDate>Mon, 19 Aug 2019 14:26:42 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>research</title>
+      <link>https://haobogu.github.io/tags/research/</link>
+      <pubDate>Fri, 16 Aug 2019 17:38:34 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/research/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vim</title>
+      <link>https://haobogu.github.io/tags/vim/</link>
+      <pubDate>Thu, 15 Aug 2019 22:16:15 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/tags/vim/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>type script on Haobo&#39;s Blog</title>
+    <link>https://haobogu.github.io/tags/type-script/</link>
+    <description>Recent content in type script on Haobo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 25 Oct 2019 14:18:50 +0800</lastBuildDate>
+    
+	<atom:link href="https://haobogu.github.io/tags/type-script/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Language Server Protocol</title>
+      <link>https://haobogu.github.io/posts/language-server-protocol/</link>
+      <pubDate>Fri, 25 Oct 2019 14:18:50 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/posts/language-server-protocol/</guid>
+      <description>Language Server Protocol(LSP) defines how the development tools and language servers communicate</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>research on Haobo&#39;s Blog</title>
+    <link>https://haobogu.github.io/tags/research/</link>
+    <description>Recent content in research on Haobo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 16 Aug 2019 17:38:34 +0800</lastBuildDate>
+    
+	<atom:link href="https://haobogu.github.io/tags/research/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A Survey of Machine Learning for Big Code and Naturalness</title>
+      <link>https://haobogu.github.io/posts/a-survey-of-machine-learning-for-big-code-and-naturalness/</link>
+      <pubDate>Fri, 16 Aug 2019 17:38:34 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/posts/a-survey-of-machine-learning-for-big-code-and-naturalness/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

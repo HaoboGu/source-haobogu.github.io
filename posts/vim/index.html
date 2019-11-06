@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Vim 命令</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  <meta name="author" content="Haobo Gu">
+  <meta name="description" content="Note taking &amp; archiving">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@gohugoio">
+  <meta name="twitter:title" content="Haobo&#39;s Blog">
+  <meta name="twitter:description" content="Note taking &amp; archiving">
+  <meta name="twitter:image" content="/images/avatar.png">
+
+  
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Haobo&#39;s Blog">
+  <meta property="og:description" content="Note taking &amp; archiving">
+  <meta property="og:url" content="https://haobogu.github.io/posts/vim/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.59.1" />
+
+
+<link rel="canonical" href="https://haobogu.github.io/posts/vim/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Haobo&#39;s Blog">
+<meta name="msapplication-tooltip" content="Haobo&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="https://haobogu.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://haobogu.github.io/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://haobogu.github.io/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="https://haobogu.github.io/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="https://haobogu.github.io/icons/icon-152x152.png">
+<link rel="manifest" href="https://haobogu.github.io/manifest.json">
+
+
+<link rel="preload" href="https://haobogu.github.io/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="https://haobogu.github.io/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="https://haobogu.github.io/images/avatar.png" as="image">
+<link rel="preload" href="https://haobogu.github.io/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="https://haobogu.github.io/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="https://haobogu.github.io/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js", "AMSfont.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <a href="https://haobogu.github.io"><img class="avatar" src="https://haobogu.github.io/images/avatar.png" alt="Avatar"></a>
+  
+  <h2 class="title"><a href="https://haobogu.github.io">Haobo&#39;s Blog</a></h2>
+  
+  <p class="subtitle">Notes &amp; Thoughts</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://haobogu.github.io/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://haobogu.github.io/posts/">Posts</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://haobogu.github.io/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://haobogu.github.io/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:haobogu@outlook.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/HaoboGu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//www.linkedin.com/in/%e6%b5%a9%e6%b3%a2-%e9%a1%be-a71875126" rel="me" title="LinkedIn" aria-label="LinkedIn">
+            <span class="icon icon-linkedin" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//space.bilibili.com/26705509" rel="me" title="Bilibili" aria-label="Bilibili">
+            <span class="icon icon-bilibili" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+       
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira&#43;Code%7cFira&#43;Mono%7cRoboto&#43;Mono%7cSource&#43;Sans&#43;Pro%7cSource&#43;Serif&#43;Pro&amp;display=swap" type="text/css" media="all" />
+     
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Vim 命令</h1>
+      <p class="post-meta">@Haobo Gu · Aug 15, 2019 · 2 min read</p>
+    </header>
+    <article class="post-content">
+        <h2 id="常用命令">常用命令</h2>
+
+<h3 id="normal-mode">Normal Mode</h3>
+
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>含义</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>&gt;&gt;</td>
+<td>向右缩进</td>
+</tr>
+
+<tr>
+<td>&lt;&lt;</td>
+<td>向左缩进</td>
+</tr>
+
+<tr>
+<td>ctrl w + hjkl</td>
+<td>跳转窗口到方向</td>
+</tr>
+
+<tr>
+<td>ctrl w + w</td>
+<td>下一个窗口</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="command-mode">Command Mode</h3>
+
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>含义</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>:sp</td>
+<td>上下拆分窗口</td>
+</tr>
+
+<tr>
+<td>:vsp</td>
+<td>左右拆分窗口</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="搜索和替换">搜索和替换</h2>
+
+<p>替换的语法：<code>范围s/original_text/replacement/替换选项</code></p>
+
+<p>替换当前行：<code>s/orginal_text/replacement/g</code>，<code>g</code>为global全局替换，即替换范围内的所有目标</p>
+
+<h4 id="替换范围">替换范围</h4>
+
+<p>替换所有行只需要在前面加个<code>%</code>，即<code>%s/orginal_text/replacement/g</code></p>
+
+<p>选择区域替换：先<code>ctrl+v</code>进入Visual Mode，选择完区域后输入<code>:</code>进入命令行模式，范围就自动添加了，后面一样。也可以手动指定，如：<code>2,12s/original_text/replacement/g</code>搜索2到12行；<code>.,+5s/original_text/replacement/g</code>表示搜索当前行<code>.</code>和接下来5行<code>+5</code></p>
+
+<h4 id="替换选项">替换选项</h4>
+
+<p><code>g</code>：global替换</p>
+
+<p><code>i/I</code>：大小写不敏感/敏感</p>
+
+<p><code>c</code>：需要确认</p>
+
+<h2 id="coc">CoC</h2>
+
+<p>一般来说，在coc.nvim中，tab选择，回车或者继续打字确定</p>
+
+<p>一些其他的增强功能如下表：</p>
+
+<p>注意，其中<code>\</code>为<code>&lt;leader&gt;</code>键，在vimrc中，<code>&lt;leader&gt;r</code>即为<code>\r</code>。Leader键一般用来表示自定义的一些快捷键</p>
+
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>含义</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>gd</td>
+<td>转到定义</td>
+</tr>
+
+<tr>
+<td>gy</td>
+<td>转到类型的定义</td>
+</tr>
+
+<tr>
+<td>gi</td>
+<td>转到实现</td>
+</tr>
+
+<tr>
+<td>gr</td>
+<td>转到reference</td>
+</tr>
+
+<tr>
+<td>\r</td>
+<td>替换下一个单词</td>
+</tr>
+
+<tr>
+<td>\f</td>
+<td>format选定的区域</td>
+</tr>
+</tbody>
+</table>
+    </article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://haobogu.github.io/tags/vim"><span class="tag">Vim</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 Haobo&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="https://haobogu.github.io/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

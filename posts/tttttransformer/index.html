@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>From Transformer to Transformer-XL</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  <meta name="author" content="Haobo Gu">
+  <meta name="description" content="Note taking &amp; archiving">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@gohugoio">
+  <meta name="twitter:title" content="Haobo&#39;s Blog">
+  <meta name="twitter:description" content="Note taking &amp; archiving">
+  <meta name="twitter:image" content="/images/avatar.png">
+
+  
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Haobo&#39;s Blog">
+  <meta property="og:description" content="Note taking &amp; archiving">
+  <meta property="og:url" content="https://haobogu.github.io/posts/tttttransformer/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.59.1" />
+
+
+<link rel="canonical" href="https://haobogu.github.io/posts/tttttransformer/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Haobo&#39;s Blog">
+<meta name="msapplication-tooltip" content="Haobo&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="https://haobogu.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://haobogu.github.io/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://haobogu.github.io/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="https://haobogu.github.io/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="https://haobogu.github.io/icons/icon-152x152.png">
+<link rel="manifest" href="https://haobogu.github.io/manifest.json">
+
+
+<link rel="preload" href="https://haobogu.github.io/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="https://haobogu.github.io/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="https://haobogu.github.io/images/avatar.png" as="image">
+<link rel="preload" href="https://haobogu.github.io/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="https://haobogu.github.io/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="https://haobogu.github.io/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js", "AMSfont.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <a href="https://haobogu.github.io"><img class="avatar" src="https://haobogu.github.io/images/avatar.png" alt="Avatar"></a>
+  
+  <h2 class="title"><a href="https://haobogu.github.io">Haobo&#39;s Blog</a></h2>
+  
+  <p class="subtitle">Notes &amp; Thoughts</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://haobogu.github.io/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://haobogu.github.io/posts/">Posts</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://haobogu.github.io/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://haobogu.github.io/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:haobogu@outlook.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/HaoboGu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//www.linkedin.com/in/%e6%b5%a9%e6%b3%a2-%e9%a1%be-a71875126" rel="me" title="LinkedIn" aria-label="LinkedIn">
+            <span class="icon icon-linkedin" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//space.bilibili.com/26705509" rel="me" title="Bilibili" aria-label="Bilibili">
+            <span class="icon icon-bilibili" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+       
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira&#43;Code%7cFira&#43;Mono%7cRoboto&#43;Mono%7cSource&#43;Sans&#43;Pro%7cSource&#43;Serif&#43;Pro&amp;display=swap" type="text/css" media="all" />
+     
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">From Transformer to Transformer-XL</h1>
+      <p class="post-meta">@Haobo Gu · Oct 9, 2019 · 9 min read</p>
+    </header>
+    <article class="post-content">
+        
+
+<h2 id="背景">背景</h2>
+
+<p>在Transformer之前，NLP领域的seq2seq模型主要基于RNN结构，如LSTM，GRU等。这种结构有几个难以克服的缺点:</p>
+
+<ol>
+<li>难以并行化</li>
+<li>速度慢</li>
+<li>长距离依赖记忆不够长</li>
+</ol>
+
+<p>Google提出的基于self-attention的Transformer和Transformer-XL结构可以很好地解决RNN的缺点，所以自2017年以来，Transformer已经成为了NLP领域对语言建模的默认选项。 Bert、GPT、XLNET等模型的基础单位都是Transformer。</p>
+
+<h2 id="overview">Overview</h2>
+
+<p><img src="http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-08-073121.png" alt="image-20191008153121224" /></p>
+
+<p>论文里面的Transformer沿用了传统的encoder-decoder结构。其主要构造单元为：</p>
+
+<ol>
+<li>Multi-Head Attention layer</li>
+<li>Position-wise fully connected layer</li>
+<li>Positional encoding</li>
+<li>LayerNorm</li>
+</ol>
+
+<p>需要注意的是，对于encoder和decoder，每个结构可以重叠N次，在论文里面N=6，即encoder叠了N层。这时，decoder的每一层拿到的K-V的输入都是encoder的最后一层的结果，即：</p>
+
+<p><img src="http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-10-121934.png" alt="image-20191010201934160" /></p>
+
+<h2 id="attention">Attention</h2>
+
+<p>Multi-Head Attention是Transformer中最重要的一部分。</p>
+
+<h3 id="scaled-dot-product-attention">Scaled Dot-Product Attention</h3>
+
+<p>Multi-head attention的基础是Scaled Dot-Product Attention：</p>
+
+<p><img src="http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-08-074145.png" alt="image-20191008154145448" /></p>
+
+<p>这里，输入有三个，Q代表query，K、V代表一个Key-Value对。用公式表示为：</p>
+
+<p>$$
+Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d_k}})\times V
+$$</p>
+
+<p>所谓self-attention实际上就是Q、K、V三个是一样的。这里的Q、K、V都是多个单词embedding的矩阵。如果句子长度为128个token，embedding的长度$d_{model}=512$，那么左边的softmax输出的实际上就是128个权重向量，和value embedding相乘得到加了self-attention的结果。</p>
+
+<p>可以简单理解为，self-attention是通过Q和K算出注意力需要放到哪些维度上，即权重向量，然后乘V得到加上attention之后的输出。</p>
+
+<h3 id="multi-head-attention">Multi-Head Attention</h3>
+
+<p><img src="http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-08-084336.png" alt="image-20191008164153020" /></p>
+
+<p>了解了Scaled Dot-Product Attention之后，Multi-Head Attention就简单了：在输入的时候，把V、K、Q都重复h次，这个h就是head的数目。当然这里不是简单的复制，而是对V、K、Q做线性变换h次：</p>
+
+<p><img src="http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-08-083841.png" alt="image-20191008163840936" /></p>
+
+<p>注意，在线性变换的时候，需要把输出的维度变为$\frac{d_{model}}{h}$，这样的话在最终输出concat之后的结果的维度才正确。同时，这样也不会增加计算消耗。</p>
+
+<p>在模型中，除了self-attention之外，还有一个encoder-decoder attention，区别就是在encoder-decoder attention中，Q和K变成了encoder的输出。V还是上一步decoder的输出。这里和传统RNN结构一样。</p>
+
+<p>实际上，Transformer的并行性主要体现在训练上面，在做推理的时候，需要和传统RNN一样，一个词一个词地预测，并且在预测下一个词的时候需要当前的输出作为输入。</p>
+
+<h2 id="position-wise-feed-forward-layer">Position-wise Feed-Forward Layer</h2>
+
+<p>这一层简称FFN，是对每一个位置的结果单独训练一个网络，位置和位置之间不共享参数，因此叫&quot;Position-wise&quot;:</p>
+
+<p><img src="http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-10-121717.png" alt="image-20191010201716753" /></p>
+
+<p>FFN的结构也很简单：两个线性变换，其中一个是ReLU：
+$$
+FFN(x) = max(0, xW_1+b_1)W_2+b_2
+$$</p>
+
+<p>中间层的宽度是超参数$d_{ff}$，在论文中取值为2048</p>
+
+<h2 id="norm-layer">Norm Layer</h2>
+
+<p>Transformer中，Attention层和FFN层后面都加了一个Normalization：</p>
+
+<p>$$
+LayerNorm(x+Sublayer(x))
+$$</p>
+
+<p>其中，LayerNorm的方法见Hinton的<a href="https://arxiv.org/pdf/1607.06450.pdf">论文</a>。</p>
+
+<h2 id="positional-encoding">Positional Encoding</h2>
+
+<p>由于self-attention中并没有保存位置相关的信息，因此需要加Positional Encoding。</p>
+
+<p>在Transformer论文中，作者提供了两种Positional Encoding：第一种是基于三角函数的，第二种是learned positional embedding。经过实验两者的结果差不多，所以作者使用的基于三角函数的Positional Encoding:</p>
+
+<p><img src="http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-08-090552.png" alt="image-20191008170552138" style="zoom: 50%;" /></p>
+
+<p>这里，i是维度，pos是token的位置。所以，对于每个维度，位置编码的波长都是不同的。而对于相同的维度来说， $PE_{pos+k}$ 总是可以表示为$PE_{pos}$的线性函数。</p>
+
+<h2 id="transformer的问题">Transformer的问题</h2>
+
+<ul>
+<li>虽然在理论上，Transformer接受任意长的序列进行并行训练。但是，在实际训练中，由于GPU、TPU内存的限制，一般的做法是指定一个固定的上下文长度，然后把输入序列按照这个长度进行切分(segmentation)，然后把每个segment扔到Transformer里面进行训练。这种训练方式带来了两个缺点：第一个是无法捕捉跨segment的长距离依赖，第二个是固定长度切分会把同一个语义块（如一个句子）切分到不同的segment里面，这样的话在预测时，由于缺乏上文信息对前几个单词的预测效果很差。在训练时，也会降低收敛速度。</li>
+</ul>
+
+<p><img src="http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-08-093434.png" alt="image-20191008173434024" /></p>
+
+<ul>
+<li>在预测时，Transformer在每一步只预测下一个单词，然后右移一位再预测。同样是只能拿到segment内的信息，且右移之后所有的预测步骤都要走一遍，速度慢。</li>
+</ul>
+
+<p>为了解决这些问题，Google提出了Transformer-XL</p>
+
+<h2 id="transformer-xl">Transformer-XL</h2>
+
+<p>Transformer-XL主要有两个贡献：1. 解决fixed-length context问题。2.引入了一种新的位置编码方式</p>
+
+<h3 id="segment-level-recurrence-with-state-reuse">Segment-Level Recurrence with State Reuse</h3>
+
+<p>Transformer-XL解决fixed-length context的方式是引入recurrent：对于每个segment，重用其之前的segment的状态开始训练而不是从头开始训练：</p>
+
+<p><img src="http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-08-094203.png" alt="image-20191008174202532" /></p>
+
+<p>这里，$h_{\tau}^n$表示第$\tau$个segment $s_\tau$生成的第n个隐层状态序列。所以这里首先把前面的segment和当前的segment做一个concat，然后再用线性映射的方式生成新的Q、K、V扔进Transformer中。</p>
+
+<p><img src="http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-08-095709.png" alt="image-20191008175709491" /></p>
+
+<p>在预测时也是类似，可以用到之前所有的segment的信息。由于所有的segment的隐状态都可以被缓存，所以相比Transformer，Transformer-XL的速度可以提升1800+倍。</p>
+
+<h3 id="relative-positional-encoding">Relative Positional Encoding</h3>
+
+<p>在Transformer-XL中，由于要对不同的窗口进行处理，因此在原版Transformer中的基于三角函数的绝对位置编码就会出现问题：原来的编码只和维度i和token的位置pos有关系，那么在不同的segment中会出现一样的位置编码（即有相同的pos和i）。</p>
+
+<p>原来的绝对位置编码：</p>
+
+<p><img src="http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-09-033549.png" alt="image-20191009113549160" style="zoom:50%;" /></p>
+
+<p>公式中，$U_{1:L}$ 是绝对位置编码，$E_{s_\tau}$是embedding，$h_\tau$是隐状态</p>
+
+<p>所以，Transformer-XL引入了相对位置矩阵：</p>
+
+<p>$$
+R_i \in \mathbb{R}^{L_{max}\times d}
+$$</p>
+
+<p>这里，i是两个位置的相对距离，$L_{max}$是整个输入序列的最长长度，在实际计算中，i可以是从0到M+L-1的任何数字，M是记忆的长度，L是segment长度。</p>
+
+<p>在实际应用中，R是可以被提前计算出来的，使用vanilla transformer中的三角函数即可。</p>
+
+<p>不同于vanilla Transformer中单纯地把位置编码和embedding加起来，Transformer-XL是在计算attention score的时候动态插入相对位置编码：</p>
+
+<p><img src="http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-09-080936.png" alt="image-20191009160936418"  /></p>
+
+<p>这个公式猛一看不好理解，回想一下原始的attention score的计算方式：</p>
+
+<p>$$
+Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d_k}})\times V
+$$</p>
+
+<p>考虑进来原来的绝对位置编码U和线性变换矩阵W，有</p>
+
+<p>$$
+QK^T=(E+U)W_q\times ((K+U)W_k)^T
+$$</p>
+
+<p>那对于第i个query和第j个key来说，有</p>
+
+<p><img src="http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-09-081458.png" alt="image-20191009161458108" style="zoom: 50%;" /></p>
+
+<p>对比两个方案，发现区别有3点：</p>
+
+<ul>
+<li>使用提前计算好的相对位置编码$R_{i-j}$代替绝对位置编码$U_j$</li>
+</ul>
+
+<p>这样就在计算attention score的时候动态引入了相对位置编码</p>
+
+<ul>
+<li>使用可学习的参数$u,v$代替$W_qU_i$</li>
+</ul>
+
+<p>在考虑相对位置时，比较标准是位置i，所以这里的$U_i$是固定的($R_0$)，因此对于任意的i，这里都可以采用同样的向量表示。因此这两个参数就被归一化成了可学习的参数$u,v$</p>
+
+<ul>
+<li>使用$W_{k,E},W_{k,R}$代替$W_k$
+之前由于是$(E+U)W_k$，对E和U做的是同一个变换。这里把它分开，变成两个可学习的线性变换。其中$W_{k,E}$对应的是对key的embedding的变换，而$W_{k,R}$是对key的相对位置编码的变换。同理，使用两个参数$u,v$代替$W_qU_i$也是相同的理念</li>
+</ul>
+
+<p>所以对于新的attention的公式，(a)对应的是content-based addressing，即query和key的内容(embedding)之间的关系；(b)对应的是content-dependent positional bias，即query内容相关的位置关系；(c)对应的是global content bias，即全局的内容影响（key的影响）；(d)对应的是global positional bias，全局的位置关系，即当前key的位置。</p>
+
+<p>这种位置编码以前的论文也出现过，但是只有(a)和(b)，舍弃了(c)和(d)，即只看重和当前query相关的信息和位置编码。在Transformer-XL中，把和全局信息相关的东西也考虑进来了。</p>
+
+<p>在实际实现的时候，通过平移可以减小bd的计算量，见Appendix B</p>
+
+<p>相关代码为：</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">rel_multihead_attn</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_w_bias</span><span class="p">,</span> <span class="n">r_r_bias</span><span class="p">,</span> <span class="n">attn_mask</span><span class="p">,</span> <span class="n">mems</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span>
+                       <span class="n">n_head</span><span class="p">,</span> <span class="n">d_head</span><span class="p">,</span> <span class="n">dropout</span><span class="p">,</span> <span class="n">dropatt</span><span class="p">,</span> <span class="n">is_training</span><span class="p">,</span>
+                       <span class="n">kernel_initializer</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="s1">&#39;rel_attn&#39;</span><span class="p">):</span>
+  <span class="c1"># w : token emb</span>
+	<span class="c1"># r : 反向的绝对位置emb</span>
+	<span class="c1"># r_w_bias ：公式中的u</span>
+	<span class="c1"># r_r_bias : 公式中的v</span>
+  
+  <span class="o">...</span>
+  <span class="o">...</span>
+  <span class="o">...</span>
+    <span class="c1"># 提取W_q + u和W_q + v</span>
+    <span class="n">rw_head_q</span> <span class="o">=</span> <span class="n">w_head_q</span> <span class="o">+</span> <span class="n">r_w_bias</span>
+    <span class="n">rr_head_q</span> <span class="o">=</span> <span class="n">w_head_q</span> <span class="o">+</span> <span class="n">r_r_bias</span>
+
+    <span class="c1"># 计算(a)和(c)</span>
+    <span class="n">AC</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;ibnd,jbnd-&gt;ijbn&#39;</span><span class="p">,</span> <span class="n">rw_head_q</span><span class="p">,</span> <span class="n">w_head_k</span><span class="p">)</span>
+    <span class="c1"># 计算(b)和(d)，这里的计算用了一个trick，使得BD的O(N^3)的计算量降到了O(N)，见论文appendix B</span>
+    <span class="n">BD</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;ibnd,jnd-&gt;ijbn&#39;</span><span class="p">,</span> <span class="n">rr_head_q</span><span class="p">,</span> <span class="n">r_head_k</span><span class="p">)</span>
+    <span class="n">BD</span> <span class="o">=</span> <span class="n">rel_shift</span><span class="p">(</span><span class="n">BD</span><span class="p">)</span>
+
+    <span class="c1"># 对QK^T做scale</span>
+    <span class="n">attn_score</span> <span class="o">=</span> <span class="p">(</span><span class="n">AC</span> <span class="o">+</span> <span class="n">BD</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span>
+    <span class="c1"># Mask</span>
+    <span class="n">attn_mask_t</span> <span class="o">=</span> <span class="n">attn_mask</span><span class="p">[:,</span> <span class="p">:,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]</span>
+    <span class="n">attn_score</span> <span class="o">=</span> <span class="n">attn_score</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">attn_mask_t</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1e30</span> <span class="o">*</span> <span class="n">attn_mask_t</span>
+
+    <span class="c1"># Softmax + dropout</span>
+    <span class="n">attn_prob</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">attn_score</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">attn_prob</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">attn_prob</span><span class="p">,</span> <span class="n">dropatt</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">is_training</span><span class="p">)</span>
+
+    <span class="c1"># attention向量乘以V得到最终的结果</span>
+    <span class="n">attn_vec</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;ijbn,jbnd-&gt;ibnd&#39;</span><span class="p">,</span> <span class="n">attn_prob</span><span class="p">,</span> <span class="n">w_head_v</span><span class="p">)</span>
+  <span class="o">...</span>
+  <span class="o">...</span></code></pre></div>
+<p>在Segment-Level Recurrence和Relative Positional Encoding的基础上，一个N层的Transformer-XL的整体公式表示为：</p>
+
+<p><img src="http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-09-085118.png" alt="image-20191009165117783" style="zoom:50%;" /></p>
+
+<p>其中，n=1,...,N，$h_\tau^0=E_{s_\tau}$，即第一层的h是embedding。</p>
+
+<h2 id="reference">Reference</h2>
+
+<ol>
+<li><p>Transformer: <a href="https://arxiv.org/abs/1706.03762">https://arxiv.org/abs/1706.03762</a></p></li>
+
+<li><p>Transformer-XL: <a href="https://arxiv.org/abs/1901.02860">https://arxiv.org/abs/1901.02860</a></p></li>
+
+<li><p>The Annotated Transformer: <a href="https://nlp.seas.harvard.edu/2018/04/03/attention.html">https://nlp.seas.harvard.edu/2018/04/03/attention.html</a></p></li>
+
+<li><p>The Illustrated Transformer: <a href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></p></li>
+</ol>
+
+    </article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://haobogu.github.io/tags/deep-learning"><span class="tag">“Deep Learning&#34;</span></a></li>
+        
+          <li><a href="https://haobogu.github.io/tags/nlp"><span class="tag">Nlp</span></a></li>
+        
+          <li><a href="https://haobogu.github.io/tags/transformer"><span class="tag">Transformer</span></a></li>
+        
+          <li><a href="https://haobogu.github.io/tags/paper-note"><span class="tag">Paper Note</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 Haobo&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="https://haobogu.github.io/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

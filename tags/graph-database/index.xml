@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Graph Database on Haobo&#39;s Blog</title>
+    <link>https://haobogu.github.io/tags/graph-database/</link>
+    <description>Recent content in Graph Database on Haobo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 21 Aug 2019 19:22:24 +0800</lastBuildDate>
+    
+	<atom:link href="https://haobogu.github.io/tags/graph-database/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Get Started With Gremlin</title>
+      <link>https://haobogu.github.io/posts/get-started-with-gremlin/</link>
+      <pubDate>Wed, 21 Aug 2019 19:22:24 +0800</pubDate>
+      
+      <guid>https://haobogu.github.io/posts/get-started-with-gremlin/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

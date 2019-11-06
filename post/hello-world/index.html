@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Hello World</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  <meta name="description" content="Go 变量 类型 Go 的基本类型有
+bool string int int8 int16 int32 int64 uint uint8 uint16 uint32 uint64 uintptr byte rune float32 float64 complex64 complex128 变量声明 &amp;amp; 赋值 var用来声明一个变量列表，变量的类型在最后。如果有初始值，可以省略类型
+:=是声明变量并且赋值，可省略类型名（自动推断），如：
+b := false //布尔型 i := 1 //整型 f := 0.618 //浮点型 c := &amp;#39;a&amp;#39; //字符 s := &amp;#34;hello&amp;#34; //字符串 cp := 3&#43;2i //复数 i := [3]int{1,2,3} //数组 :=相当于var var_name type = val。一般来说，上面的var语句中，当右边有值的时候，type可以忽略
+ :=只能用在函数内，var可用在函数外  对于Go，可以统一分组声明变量或者常量：
+var ( int_var int str_var string complex_var complex128 ) const ( int_const int str_const string ) 类型转换 - T(v)：">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="Hello World">
+    <meta name="twitter:description" content="Go 变量 类型 Go 的基本类型有
+bool string int int8 int16 int32 int64 uint uint8 uint16 uint32 uint64 uintptr byte rune float32 float64 complex64 complex128 变量声明 &amp;amp; 赋值 var用来声明一个变量列表，变量的类型在最后。如果有初始值，可以省略类型
+:=是声明变量并且赋值，可省略类型名（自动推断），如：
+b := false //布尔型 i := 1 //整型 f := 0.618 //浮点型 c := &amp;#39;a&amp;#39; //字符 s := &amp;#34;hello&amp;#34; //字符串 cp := 3&#43;2i //复数 i := [3]int{1,2,3} //数组 :=相当于var var_name type = val。一般来说，上面的var语句中，当右边有值的时候，type可以忽略
+ :=只能用在函数内，var可用在函数外  对于Go，可以统一分组声明变量或者常量：
+var ( int_var int str_var string complex_var complex128 ) const ( int_const int str_const string ) 类型转换 - T(v)：">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Hello World">
+  <meta property="og:description" content="Go 变量 类型 Go 的基本类型有
+bool string int int8 int16 int32 int64 uint uint8 uint16 uint32 uint64 uintptr byte rune float32 float64 complex64 complex128 变量声明 &amp;amp; 赋值 var用来声明一个变量列表，变量的类型在最后。如果有初始值，可以省略类型
+:=是声明变量并且赋值，可省略类型名（自动推断），如：
+b := false //布尔型 i := 1 //整型 f := 0.618 //浮点型 c := &amp;#39;a&amp;#39; //字符 s := &amp;#34;hello&amp;#34; //字符串 cp := 3&#43;2i //复数 i := [3]int{1,2,3} //数组 :=相当于var var_name type = val。一般来说，上面的var语句中，当右边有值的时候，type可以忽略
+ :=只能用在函数内，var可用在函数外  对于Go，可以统一分组声明变量或者常量：
+var ( int_var int str_var string complex_var complex128 ) const ( int_const int str_const string ) 类型转换 - T(v)：">
+  <meta property="og:url" content="https://haobogu.github.io/post/hello-world/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.56.3">
+
+
+<link rel="canonical" href="https://haobogu.github.io/post/hello-world/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Haobo&#39;s Blog">
+<meta name="msapplication-tooltip" content="Haobo&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="https://haobogu.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://haobogu.github.io/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://haobogu.github.io/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="https://haobogu.github.io/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="https://haobogu.github.io/icons/icon-152x152.png">
+<link rel="manifest" href="https://haobogu.github.io/manifest.json">
+
+
+<link rel="preload" href="https://haobogu.github.io/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="https://haobogu.github.io/images/avatar.png" as="image">
+<link rel="preload" href="https://haobogu.github.io/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="https://haobogu.github.io/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <a href="https://haobogu.github.io"><img class="avatar" src="https://haobogu.github.io/images/avatar.png" alt="Avatar"></a>
+  
+  <h2 class="title"><a href="https://haobogu.github.io">Haobo&#39;s Blog</a></h2>
+  
+  <p class="subtitle">Home for my notes and thoughts</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="https://haobogu.github.io/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://haobogu.github.io/posts/">Posts</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://haobogu.github.io/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:haobogu@outlook.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/HaoboGu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//space.bilibili.com/26705509" rel="me" title="Bilibili" aria-label="Bilibili">
+            <span class="icon icon-bilibili" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Hello World</h1>
+      <p class="post-meta">@Haobo Gu · Aug 14, 2019 · 2 min read</p>
+    </header>
+    <article class="post-content">
+
+<h1 id="go">Go</h1>
+
+<h2 id="变量">变量</h2>
+
+<h3 id="类型">类型</h3>
+
+<p>Go 的基本类型有</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">bool</span>
+<span style="color:#66d9ef">string</span>
+<span style="color:#66d9ef">int</span>  <span style="color:#66d9ef">int8</span>  <span style="color:#66d9ef">int16</span>  <span style="color:#66d9ef">int32</span>  <span style="color:#66d9ef">int64</span>
+<span style="color:#66d9ef">uint</span> <span style="color:#66d9ef">uint8</span> <span style="color:#66d9ef">uint16</span> <span style="color:#66d9ef">uint32</span> <span style="color:#66d9ef">uint64</span> <span style="color:#66d9ef">uintptr</span>
+<span style="color:#66d9ef">byte</span> 
+<span style="color:#66d9ef">rune</span>
+<span style="color:#66d9ef">float32</span> <span style="color:#66d9ef">float64</span>
+<span style="color:#66d9ef">complex64</span> <span style="color:#66d9ef">complex128</span></code></pre></div>
+<h3 id="变量声明-赋值">变量声明 &amp; 赋值</h3>
+
+<p><code>var</code>用来声明一个变量列表，变量的类型在最后。如果有初始值，可以省略类型</p>
+
+<p><code>:=</code>是声明变量并且赋值，可省略类型名（自动推断），如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">b</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">false</span> <span style="color:#75715e">//布尔型
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e">//整型
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">f</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0.618</span> <span style="color:#75715e">//浮点型
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#39;a&#39;</span> <span style="color:#75715e">//字符
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">s</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;hello&#34;</span> <span style="color:#75715e">//字符串
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">cp</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">3</span><span style="color:#f92672">+</span><span style="color:#ae81ff">2i</span>  <span style="color:#75715e">//复数
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> [<span style="color:#ae81ff">3</span>]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>} <span style="color:#f92672">//</span><span style="color:#a6e22e">数组</span></code></pre></div>
+<p><code>:=</code>相当于<code>var var_name type = val</code>。一般来说，上面的var语句中，当右边有值的时候，type可以忽略</p>
+
+<ul>
+<li><code>:=</code>只能用在函数内，<code>var</code>可用在函数外</li>
+</ul>
+
+<p>对于Go，可以统一分组声明变量或者常量：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> (
+	<span style="color:#a6e22e">int_var</span> <span style="color:#66d9ef">int</span>
+	<span style="color:#a6e22e">str_var</span> <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">complex_var</span> <span style="color:#66d9ef">complex128</span>
+)
+<span style="color:#66d9ef">const</span> (
+	<span style="color:#a6e22e">int_const</span> <span style="color:#66d9ef">int</span>
+  <span style="color:#a6e22e">str_const</span> <span style="color:#66d9ef">string</span>
+)</code></pre></div>
+<p>类型转换 - T(v)：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> float64(<span style="color:#a6e22e">int_var</span>)</code></pre></div>
+<h2 id="逻辑">逻辑</h2>
+
+<p>一般来说，在Go里面，和Java、C/C++相比，都是无需小括号()，大括号{}必须</p>
+
+<h3 id="循环">循环</h3>
+
+<p>Go里面只有for循环</p>
+
+<p>语法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 标准for
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">10</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+  <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">i</span>)
+}
+
+<span style="color:#75715e">// 除条件之外另外两个可选
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> ; <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">10</span>; {
+  <span style="color:#a6e22e">i</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+  <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">i</span>)
+}
+
+<span style="color:#75715e">// 去掉分号，其实就是while
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">1000</span> {
+  <span style="color:#a6e22e">i</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+  <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">i</span>)
+}</code></pre></div>
+<h3 id="条件">条件</h3>
+
+<p>不同的地方在于，可以在条件之前执行一个简单的语句：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 判断v是否小于lim，之前先赋值v
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">v</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Pow</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">n</span>); <span style="color:#a6e22e">v</span> &lt; <span style="color:#a6e22e">lim</span> {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">v</span>
+} <span style="color:#66d9ef">else</span> {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">lim</span>
+}</code></pre></div>
+<h3 id="switch">switch</h3>
+
+<p>Go中只会运行选定的case</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">os</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">runtime</span>.<span style="color:#a6e22e">GOOS</span>; <span style="color:#a6e22e">os</span> {
+  <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;darwin&#34;</span>:
+  <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;OS X&#34;</span>)
+  <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;linux&#34;</span>:
+  <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;linux&#34;</span>)
+  <span style="color:#66d9ef">default</span>:
+  <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%s&#34;</span>, <span style="color:#a6e22e">os</span>)
+}</code></pre></div>
+<h3 id="defer">defer</h3>
+
+<p><code>defer</code>会把语句推迟到<strong>外层函数返回之后</strong>执行，每个defer会被压入defer栈，后进先出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;counting&#34;</span>)
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">5</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">i</span>)
+	}
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;done&#34;</span>)
+}
+
+<span style="color:#75715e">// 结果
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">counting</span>
+<span style="color:#a6e22e">done</span>
+<span style="color:#ae81ff">4</span>
+<span style="color:#ae81ff">3</span>
+<span style="color:#ae81ff">2</span>
+<span style="color:#ae81ff">1</span>
+<span style="color:#ae81ff">0</span></code></pre></div>
+<h2 id="函数">函数</h2>
+
+<p><code>func</code>开头，类型放在最后面</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 最后面的float32是返回值类型
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">my_func</span>(<span style="color:#a6e22e">x</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">y</span> <span style="color:#66d9ef">float32</span>) <span style="color:#66d9ef">float32</span> {
+  <span style="color:#66d9ef">return</span> float32(<span style="color:#a6e22e">x</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">y</span>
+}
+
+<span style="color:#75715e">// 如果多个参数类型相同，只需要在最后写一个
+</span><span style="color:#75715e">// 可以有多个返回值
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">my_func2</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">z</span> <span style="color:#66d9ef">int</span>) (<span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">y</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">z</span>, <span style="color:#a6e22e">z</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">x</span>
+}
+
+<span style="color:#75715e">// 可以在返回值类型处先命名返回值， 然后直接return即可
+</span><span style="color:#75715e">// !这样子在长函数中可读性不佳
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">my_func3</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span> <span style="color:#66d9ef">string</span>) (<span style="color:#a6e22e">yy</span>, <span style="color:#a6e22e">xx</span> <span style="color:#66d9ef">string</span>) {
+  <span style="color:#a6e22e">yy</span> = <span style="color:#a6e22e">y</span>
+  <span style="color:#a6e22e">xx</span> = <span style="color:#a6e22e">x</span>
+  <span style="color:#66d9ef">return</span>
+}</code></pre></div></article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        © This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 Haobo&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="https://haobogu.github.io/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

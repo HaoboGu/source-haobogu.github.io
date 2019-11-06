@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>A Survey of Machine Learning for Big Code and Naturalness</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  <meta name="author" content="Haobo Gu">
+  <meta name="description" content="Note taking &amp; archiving">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@gohugoio">
+  <meta name="twitter:title" content="Haobo&#39;s Blog">
+  <meta name="twitter:description" content="Note taking &amp; archiving">
+  <meta name="twitter:image" content="/images/avatar.png">
+
+  
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Haobo&#39;s Blog">
+  <meta property="og:description" content="Note taking &amp; archiving">
+  <meta property="og:url" content="https://haobogu.github.io/posts/a-survey-of-machine-learning-for-big-code-and-naturalness/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.59.1" />
+
+
+<link rel="canonical" href="https://haobogu.github.io/posts/a-survey-of-machine-learning-for-big-code-and-naturalness/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Haobo&#39;s Blog">
+<meta name="msapplication-tooltip" content="Haobo&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="https://haobogu.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://haobogu.github.io/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://haobogu.github.io/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="https://haobogu.github.io/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="https://haobogu.github.io/icons/icon-152x152.png">
+<link rel="manifest" href="https://haobogu.github.io/manifest.json">
+
+
+<link rel="preload" href="https://haobogu.github.io/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="https://haobogu.github.io/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="https://haobogu.github.io/images/avatar.png" as="image">
+<link rel="preload" href="https://haobogu.github.io/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="https://haobogu.github.io/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="https://haobogu.github.io/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js", "AMSfont.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <a href="https://haobogu.github.io"><img class="avatar" src="https://haobogu.github.io/images/avatar.png" alt="Avatar"></a>
+  
+  <h2 class="title"><a href="https://haobogu.github.io">Haobo&#39;s Blog</a></h2>
+  
+  <p class="subtitle">Notes &amp; Thoughts</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://haobogu.github.io/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://haobogu.github.io/posts/">Posts</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://haobogu.github.io/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://haobogu.github.io/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:haobogu@outlook.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/HaoboGu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//www.linkedin.com/in/%e6%b5%a9%e6%b3%a2-%e9%a1%be-a71875126" rel="me" title="LinkedIn" aria-label="LinkedIn">
+            <span class="icon icon-linkedin" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//space.bilibili.com/26705509" rel="me" title="Bilibili" aria-label="Bilibili">
+            <span class="icon icon-bilibili" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+       
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira&#43;Code%7cFira&#43;Mono%7cRoboto&#43;Mono%7cSource&#43;Sans&#43;Pro%7cSource&#43;Serif&#43;Pro&amp;display=swap" type="text/css" media="all" />
+     
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">A Survey of Machine Learning for Big Code and Naturalness</h1>
+      <p class="post-meta">@Haobo Gu · Aug 16, 2019 · 4 min read</p>
+    </header>
+    <article class="post-content">
+        <h2 id="introduction">Introduction</h2>
+
+<p>Software engineering(SE) and programming languages(PL) should make the transition just like NLP: from brittle rule-based expert systems to statistical methods and machine learning techniques.</p>
+
+<p>The paper is orginized as follows:</p>
+
+<ol>
+<li>Difference between natural language and source code</li>
+<li>Taxonomy of probabilistic models of source code</li>
+<li>SE and PL applications</li>
+<li>Challenges and future directions</li>
+</ol>
+
+<h2 id="the-naturalness-hypothesis">The Naturalness Hypothesis</h2>
+
+<p>The Naturalness Hypothesis</p>
+
+<blockquote>
+<p>Software is a form of human communications; software corpora have similar statistical properties to natural language corpora; these properties can be exploited to build better software engineering tools</p>
+</blockquote>
+
+<p>Insights:</p>
+
+<ol>
+<li>Because coding is an act of communication, so the large code corpora is expected to have rich patterns, just like natural language corpora.
+Example: models developed for natural language are effective for source code</li>
+<li>Probabilistic model can be <em>learned</em> to describe how developers <em>naturally</em> writes and use code.</li>
+<li>Naturalness means learnable and predictionable</li>
+</ol>
+
+<h2 id="text-code-and-machine-learning">Text, Code and Machine Learning</h2>
+
+<p>Source code plays a role of connector between computers and the human mind.</p>
+
+<p>Hindle et al. shows that code is more predictable than texts using n-gram language model.</p>
+
+<p>Enumerate differences between code and texts is helpful for us to gain some insights on modifying NLP techniques to deal with code:</p>
+
+<p>Code is executable and has formal syntax and semantics. We will discuss these aspects comparing code with text.</p>
+
+<h3 id="executable">Executable</h3>
+
+<p>Code is more brittle, small changes may lead to huge differences. Texts are usually more robust to readers. It requires combination of probabilistic and formal methods.</p>
+
+<p>Programming languages can be translated between each other exactly, because all mainstream programming languages are Turing-complete.</p>
+
+<h3 id="formality">Formality</h3>
+
+<p>Programming languages are formal languages. Code's formality facilites reuse, Gabel et al. found that code is more pattern dense than text.</p>
+
+<p>Also, code has less ambiguity than text, but the problem of ambiguity still exists.</p>
+
+<h3 id="cross-channel-interaction">Cross-Channel Interaction</h3>
+
+<p>Natural semantic units of code are <strong>identifiers, statements, blocks and functions</strong>. All of them have less semantic information than textual semantic units like words and sentences.</p>
+
+<p>Almost 70% words are identifiers and neologisms(新词) are more common in code.</p>
+
+<ul>
+<li>How existing work handles neologism: introduce cache mechanisms or decompose identifiers at a subtoken level</li>
+</ul>
+
+<p>Which semantic unit of code is more useful? It's an open question.</p>
+
+<h2 id="probabilistic-models-of-code">Probabilistic Models of Code</h2>
+
+<h3 id="code-generating-models">Code-generating Models</h3>
+
+<p>General code-generating models can be formulated as:
+$$
+P_D(c|C(c))
+$$
+When context $C(c)$ is $\emptyset$, the probability distribution $P_D$ is a <strong>language model</strong> for code; when $C(c)$ is code, $P_D$ is a <strong>transducer model</strong>; when $C(c)$ is natural language, $P_D$ is a <strong>code-generative multimodal model</strong> of code.</p>
+
+<p>In addition, by the way they generate code's structure, code-generating models can be divided into three types:</p>
+
+<ol>
+<li><p>Token-level models: generate token sequences</p>
+
+<ul>
+<li>Cannot always generate executable code</li>
+<li>Approaches:
+
+<ul>
+<li>N-gram, with smoothing and cache mechanism.</li>
+<li>RNN</li>
+</ul></li>
+</ul></li>
+
+<li><p>Syntactic models: generate tree structures</p>
+
+<ul>
+<li>Generate syntactically correct code</li>
+<li>Different from application in NLP, PCFG is not suitable for code generation. Because nearby tokens may be far away in the AST, PCFG cannot even capture close dependencies(as well as long-range dependencies, but this is not the point, n-gram do not capture this neither)</li>
+<li>Expensive computation cost than token-level model</li>
+</ul></li>
+
+<li><p>Semantic models: generate graph structures</p>
+
+<ul>
+<li>DIfficult, less resource on this topic</li>
+</ul></li>
+</ol>
+
+<h4 id="types-of-code-generating-models">Types of Code Generating Models</h4>
+
+<h5 id="1-language-models">1. Language Models</h5>
+
+<p>LM models programming language itself without using any external content.</p>
+
+<p>Code LMs are evaluated using perplexity or cross-entropy just like normal LM in NLP</p>
+
+<h5 id="2-code-transducer-models">2. Code Transducer Models</h5>
+
+<p>Code transducer models translate code from one format to another format. For example, pesudo code generator or code migration.</p>
+
+<p>Most of transducer models are phrase based model, which is not good at describing long-range dependency.</p>
+
+<p>Transducer models can be evaluated using BLEU, etc.</p>
+
+<h5 id="3-multimodal-models">3. Multimodal Models</h5>
+
+<p>Multimodal model exploits non-code modalities, like comments, search queries, etc.</p>
+
+<p>The key idea is to convert natural language to an intermediate representation, then parse it to code, which is similar with semantic parsing in NLP</p>
+
+<h3 id="representational-models-of-code">Representational Models of Code</h3>
+
+<p>Different from generative models, representational models learns embeddings from code.</p>
+
+<h4 id="distributed-representations-code-embedding">Distributed representations(Code embedding)</h4>
+
+<p>Tasks</p>
+
+<ul>
+<li>Predict method name</li>
+<li>Predict relevant API sequences(Seq2seq)</li>
+<li>Represent solution-problem mapping</li>
+<li>Source code input&amp;output pairs to review student assignment</li>
+<li>Neural code-generative models</li>
+<li>Generate other modalities like comments</li>
+</ul>
+
+<h4 id="structured-prediction">Structured prediction</h4>
+
+<p>Predict interdependent variables, like POS prediction in NLP. Structured prediction and distributed representations are not exclusive.</p>
+
+<p>Example:</p>
+
+<ul>
+<li><p><em>Raychev et al</em>. represent code as a variable dependency network, each variable is a node, model pairwise interactions as a CRF -&gt; predict types and names of variables</p></li>
+
+<li><p><em>Gu et al.</em> predict the sequence of API calls</p></li>
+</ul>
+
+<h3 id="pattern-mining-models">Pattern Mining Models</h3>
+
+<p>Pattern mining models aims to discover <strong>a finite set of human-interpretable patterns</strong> from source code.</p>
+
+<p>Example:</p>
+
+<p>​   <em>Fowkes et al.</em> learn the latent variables of a graphical model to infer common API usage patterns</p>
+
+<h2 id="applications">Applications</h2>
+
+<h3 id="recommender-systems">Recommender Systems</h3>
+
+<p>Modeling programmers' intent is a challenge.</p>
+
+<p>The most prominent recommender system in code intelligence field is <strong><u>code completion</u></strong>.</p>
+
+<p>Existing Research:</p>
+
+<ul>
+<li><p>n-gram and cached n-gram:</p>
+
+<p>n-gram LM is used to model source code, cache is used to catch local information</p></li>
+
+<li><p>AST-level LM</p>
+
+<p>Maddison and Tarlow</p></li>
+</ul>
+
+<h3 id="inferring-coding-conventions">Inferring Coding Conventions</h3>
+
+<p>Coding convention: syntactic constraints on code beyond grammar, like formatting, CamelCase naming, etc.</p>
+
+<p>Learning of coding conventions from codebases helps teams to determine their coding conventions</p>
+
+<p>Machine learning models for learning surface structure are well-suited for this task, while there exists a challenge: the sparsity of the code constructs.</p>
+
+<h3 id="code-defects">Code Defects</h3>
+
+<p>Finding code defects is quite difficult beacuse of the rarity of defects and the extreme diversity of source code.</p>
+
+<p>Proliminary work shows that the lower probability of specific code may indicate code defects. Not all anomalous behavior is a bug(it may be just rare behavior), the vast diversity of code constructs entails sparsity, from which all anomaly detection methods suffer.</p>
+
+<h3 id="code-translation-copying-and-clones">Code Translation, Copying, and Clones</h3>
+
+<h4 id="translation">Translation</h4>
+
+<p>The success of SMT has inspired researchers to use ML to translate code from one source language to another. Translation on similar languages are easier. But for languages which have different memory allocations, translation is difficult.</p>
+
+<h4 id="clones">Clones</h4>
+
+<p>Clones may indicate refactoring opportunities.</p>
+
+<p>Embedding can be used to detect clones due to the similar snippets share the similar distributed vector representations. Use embedding allows us to learn a continuous similarity metric(like cosine distance) between code locations, rather than using edit distance.</p>
+
+<h3 id="code-to-text-and-text-to-code">Code to Text and Text to Code</h3>
+
+<h4 id="code-to-text">Code to Text</h4>
+
+<p>C2T has applications to code documentation and readability.</p>
+
+<p>Example: code to pseudocode, code to comments</p>
+
+<h4 id="text-to-code">Text to Code</h4>
+
+<p>This area is more related to semantic parsing in NLP.</p>
+
+<blockquote>
+<p>Semantic parsing is the task of converting a natural language utterance into a representation of its meaning, often database or logical queries. Those representations can be used in subsequentily question answering.</p>
+</blockquote>
+
+<p>Based on current research, the target code can be Excel macros, Java expressions, shell commands, etc.</p>
+
+<p>For more information, please refer to Neubig's survey of code generation methods.</p>
+
+<h3 id="documentation-traceability-and-information-retrieval">Documentation, Traceability and Information Retrieval</h3>
+
+<p>General C2T and T2C can be used here, but more specialized solutions are more effective on problems like documentation and code search. Information retrieval methods are widely used.</p>
+
+<p>Code search problems are evaluated using rank-based measures.</p>
+
+<h3 id="program-synthesis">Program Synthesis</h3>
+
+<p>Program synthesis is concerned with generating full or partial programs from a specification. When the specification is natural language, this is a semantic parsing task(same as T2C). Besides natural language, a lot of other specifications can be used in program synthesis.</p>
+
+<h3 id="program-analysis">Program Analysis</h3>
+
+<p>Program analysis aims to <strong><em>soundly</em></strong> extract semantic properties (like correctness) from programs. There are three streams which exploit probabilistic models to deal with code sound analyses problem.</p>
+
+<ol>
+<li><p>A family of modes relaxes the soundness requirement, yielding probabilistic results instead</p></li>
+
+<li><p>The second stream uses machine learning to create models that produce plausible hypotheses of formal verification statements that can be proved</p></li>
+</ol>
+
+<p>Example: Brockschmidt et al. proposed a model which generates separation logic expressions from the heap graph of a program, suitable for formally verifying program's correctness.</p>
+
+<ol>
+<li>The third stream learns heuristics replacing hard-coded heuristics to speed-up the search for a formal automated proof</li>
+</ol>
+
+<h2 id="challenges-and-future-directions">Challenges and Future Directions</h2>
+
+<p>Deep learning is popular, but it is not necessary. In many cases, simple models can outperform advanced off-the-self deep learning methods.</p>
+
+<h3 id="bridging-representations-and-communities">Bridging Representations and Communities</h3>
+
+<p>In software engineering research, a well-defined and widely useful set of representations are used, such as AST, CFG, etc. In contrast, machine learning usually uses continuous representations.</p>
+
+<p>Introducing better representations that bridge the gap between machine learning and source code will allow the probabilistic models of code to reason about the rich structure and semantics of code.</p>
+
+<h3 id="data-sparsity-compositionality-and-strong-generalization">Data Sparsity, Compositionality and Strong Generalization</h3>
+
+<p><strong><u>Sparsity</u></strong>: it's hard to find multiple source code elements which perform <strong>exactly</strong> the same tasks.</p>
+
+<p><strong><u>Compositionality</u></strong>: meaning of some element can be understood by composing the meaning of its constituent parts.</p>
+
+<ul>
+<li>Example</li>
+</ul>
+
+<p>Methods -&gt; Classes</p>
+
+<p>Word -&gt; Variable names in camel case naming</p>
+
+<ul>
+<li>This area is still challenging for general machine learning fields, because capturing relations between objects especially across abstraction levels is difficult.</li>
+</ul>
+
+<blockquote>
+<p>If suﬃcient progress is to be made, representing source code artifacts in machine learning will improve signiﬁcantly, positively aﬀecting other downstream tasks</p>
+</blockquote>
+
+<p><strong><u>Strong generalization</u></strong>: big machine model learned from big code is usually to large for developer's machine. Hence, generalization is a deployability problem.</p>
+
+<ul>
+<li>Direction: transfer learning &amp; one-shot learning</li>
+<li>Learning from multiple views of source code may help to deal with generalization problem and data sparsity</li>
+</ul>
+
+<h3 id="measures">Measures</h3>
+
+<p>High-quality benchmarks, shared tasks and evaluation metrics play an important role win great success in NLP and CV in recent years.</p>
+
+<ul>
+<li><p>Some meansurements can be imprecise</p></li>
+
+<li><p>Some metrics that are widely used in NLP are not suitable for source code, such as BLEU.</p></li>
+</ul>
+
+<p>Small changes in source code may lead to big difference; syntactically diverse answers may be semantically equivalent.</p>
+
+<h2 id="new-domains">New Domains</h2>
+
+<h3 id="debugging">Debugging</h3>
+
+<p>Trace buggy code during execution</p>
+
+<h3 id="traceability">Traceability</h3>
+
+<p>Study links among software engineering artifacts</p>
+
+<p>Example: fix commit -&gt; bug reports</p>
+
+<h3 id="code-completion-and-synthesis">Code Completion and Synthesis</h3>
+
+<p>We don't have a well-accepted benchmark in this area.</p>
+
+<p>When reasoning about incomplete code's semantics, modeling how code could be completed is helpful</p>
+
+<h3 id="education">Education</h3>
+
+<h3 id="assistive-tools">Assistive Tools</h3>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<p>Almost every area of program analysis and software engineering would benefit from the development of probabilistic models of source code.</p>
+
+<blockquote>
+<p>Probabilistic models of source code raise the exciting opportunity of learning from existing code, probabilistically reasoning about new source code artifacts and transferring knowledge between developers and projects</p>
+
+<p>Most of the research contained in this review was conducted within the past few years</p>
+</blockquote>
+    </article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://haobogu.github.io/tags/paper-note"><span class="tag">Paper Note</span></a></li>
+        
+          <li><a href="https://haobogu.github.io/tags/research"><span class="tag">Research</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 Haobo&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="https://haobogu.github.io/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>VS Code Extension</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  <meta name="author" content="Haobo Gu">
+  <meta name="description" content="Note taking &amp; archiving">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@gohugoio">
+  <meta name="twitter:title" content="Haobo&#39;s Blog">
+  <meta name="twitter:description" content="Note taking &amp; archiving">
+  <meta name="twitter:image" content="/images/avatar.png">
+
+  
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Haobo&#39;s Blog">
+  <meta property="og:description" content="Note taking &amp; archiving">
+  <meta property="og:url" content="https://haobogu.github.io/posts/vs-code-extension/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.59.1" />
+
+
+<link rel="canonical" href="https://haobogu.github.io/posts/vs-code-extension/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Haobo&#39;s Blog">
+<meta name="msapplication-tooltip" content="Haobo&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="https://haobogu.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://haobogu.github.io/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://haobogu.github.io/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="https://haobogu.github.io/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="https://haobogu.github.io/icons/icon-152x152.png">
+<link rel="manifest" href="https://haobogu.github.io/manifest.json">
+
+
+<link rel="preload" href="https://haobogu.github.io/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="https://haobogu.github.io/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="https://haobogu.github.io/images/avatar.png" as="image">
+<link rel="preload" href="https://haobogu.github.io/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="https://haobogu.github.io/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="https://haobogu.github.io/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js", "AMSfont.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <a href="https://haobogu.github.io"><img class="avatar" src="https://haobogu.github.io/images/avatar.png" alt="Avatar"></a>
+  
+  <h2 class="title"><a href="https://haobogu.github.io">Haobo&#39;s Blog</a></h2>
+  
+  <p class="subtitle">Notes &amp; Thoughts</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://haobogu.github.io/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://haobogu.github.io/posts/">Posts</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://haobogu.github.io/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="https://haobogu.github.io/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:haobogu@outlook.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/HaoboGu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//www.linkedin.com/in/%e6%b5%a9%e6%b3%a2-%e9%a1%be-a71875126" rel="me" title="LinkedIn" aria-label="LinkedIn">
+            <span class="icon icon-linkedin" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//space.bilibili.com/26705509" rel="me" title="Bilibili" aria-label="Bilibili">
+            <span class="icon icon-bilibili" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+       
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira&#43;Code%7cFira&#43;Mono%7cRoboto&#43;Mono%7cSource&#43;Sans&#43;Pro%7cSource&#43;Serif&#43;Pro&amp;display=swap" type="text/css" media="all" />
+     
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">VS Code Extension</h1>
+      <p class="post-meta">@Haobo Gu · Oct 12, 2019 · 3 min read</p>
+    </header>
+    <article class="post-content">
+        
+
+<p>Reference: <a href="https://liiked.github.io/VS-Code-Extension-Doc-ZH">https://liiked.github.io/VS-Code-Extension-Doc-ZH</a></p>
+
+<p>I'm working on improve the performance of code completion tools. Recently, I turned to node.js completion. Hence, I have to learning somethings about extension development in visual studio code, in order to develop a demo to validate and test the model.</p>
+
+<h2 id="get-started">Get Started</h2>
+
+<p>First, install <a href="https://yeoman.io/">Yeoman</a> and <a href="https://www.npmjs.com/package/generator-code">VS Code Extension Generator</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">npm install -g yo generator-code</code></pre></div>
+<p>Then, run <code>yo code</code> and fill out the necessary information, Yeoman will generate a source folder for VSC extension automatically.</p>
+
+<p>Then, open VSC and enter the plugin folder, press <code>F5</code>, a test VSC window will be opened. Open VSC command window(<code>shift + command(ctrl) + p</code>) and enter <code>Hello World</code>, the VSC will show a notification which says &quot;Hello World&quot; in the right-bottom of the test window:<img src="http://haobo-markdown.oss-cn-zhangjiakou.aliyuncs.com/markdown/2019-10-12-093231.png" alt="image-20191012173231410" /></p>
+
+<p>Congrats! You've successfully run your first extension!</p>
+
+<h2 id="but-how-does-it-work">But how does it work?</h2>
+
+<p>We check the created source folder of the VSC extension first:</p>
+
+<pre><code>.
+├── .vscode
+│   ├── launch.json     // Config for launching and debugging the extension
+│   └── tasks.json      // Config for build task that compiles TypeScript
+├── .gitignore          // Ignore build output and node_modules
+├── README.md           // Readable description of your extension's functionality
+├── src
+│   └── extension.ts    // Extension source code
+├── package.json        // Extension manifest
+├── tsconfig.json       // TypeScript configuration
+</code></pre>
+
+<p>Each VSC extension must have a <code>package.json</code>, in which we stores information about the extension, such as <code>name</code>, <code>publisher</code>, <code>activationEvents</code>, etc. Some important keywords are listed here:</p>
+
+<ul>
+<li><code>name</code> and <code>publisher</code>: VSC uses <code>publisher.name</code> as the identifier of the extension</li>
+<li><code>main</code>: entrance file of the extension</li>
+<li><code>activationEvents</code>: the event used to activate the extension</li>
+<li><code>contributes</code>: configurations, including user defined configurations</li>
+</ul>
+
+<p>In the generated source folder, the entry file is <code>extension.js</code>, now let's have a look:</p>
+<div class="highlight"><pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="c1">// The module &#39;vscode&#39; contains the VS Code extensibility API
+</span><span class="c1"></span><span class="kr">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">vscode</span> <span class="nx">from</span> <span class="s1">&#39;vscode&#39;</span><span class="p">;</span>
+
+<span class="c1">// this method is called when your extension is activated
+</span><span class="c1">// your extension is activated the very first time the command is executed
+</span><span class="c1"></span><span class="kr">export</span> <span class="kd">function</span> <span class="nx">activate</span><span class="p">(</span><span class="nx">context</span>: <span class="kt">vscode.ExtensionContext</span><span class="p">)</span> <span class="p">{</span>
+
+	<span class="c1">// Use the console to output diagnostic information (console.log) and errors (console.error)
+</span><span class="c1"></span>	<span class="c1">// This line of code will only be executed **once** when your extension is activated
+</span><span class="c1"></span>	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Congratulations, your extension &#34;node-completion&#34; is now active!&#39;</span><span class="p">);</span>
+
+	<span class="c1">// The command has been defined in the package.json file
+</span><span class="c1"></span>	<span class="c1">// Now provide the implementation of the command with registerCommand
+</span><span class="c1"></span>	<span class="c1">// The commandId parameter must match the command field in package.json
+</span><span class="c1"></span>	<span class="kd">let</span> <span class="nx">disposable</span> <span class="o">=</span> <span class="nx">vscode</span><span class="p">.</span><span class="nx">commands</span><span class="p">.</span><span class="nx">registerCommand</span><span class="p">(</span><span class="s1">&#39;extension.helloWorld&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="c1">// The code you place here will be executed every time your command is executed
+</span><span class="c1"></span>
+		<span class="c1">// Display a message box to the user
+</span><span class="c1"></span>		<span class="nx">vscode</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">showInformationMessage</span><span class="p">(</span><span class="s1">&#39;Hello VS World!&#39;</span><span class="p">);</span>
+	<span class="p">});</span>
+
+	<span class="nx">context</span><span class="p">.</span><span class="nx">subscriptions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">disposable</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// this method is called when your extension is deactivated
+</span><span class="c1"></span><span class="kr">export</span> <span class="kd">function</span> <span class="nx">deactivate() {</span><span class="p">}</span>
+</code></pre></div>
+<p>The entry file exports two functions: <code>activate</code> and <code>deactivate</code>. <code>activate</code> will be executed when the <code>activationEvents</code> are triggered, while <code>deactivate</code> is used to clear in workspace before the extension is closed.</p>
+
+<p>Our first extension contains three parts actually:</p>
+
+<ul>
+<li><code>onCommand</code> activationEvents</li>
+</ul>
+
+<p>This is defined in <code>package.json</code>'s <code>activationEvents</code> field. After defining this, the user can enter <code>Hello World</code> to activate the extension.</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json">  <span class="s2">&#34;activationEvents&#34;</span><span class="err">:</span> <span class="p">[</span>
+  	<span class="s2">&#34;onCommand:extension.helloWorld&#34;</span>
+  <span class="p">]</span></code></pre></div>
+<ul>
+<li><code>contributes.commands</code></li>
+</ul>
+
+<p>This is also defined in <code>package.json</code>. This field is used to bind the command ID <code>extension.helloWorld</code> with keyword <code>Hello World</code>. With this we can use <code>Hello World</code> command in VSC's command window.</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json">  <span class="s2">&#34;contributes&#34;</span><span class="err">:</span> <span class="p">{</span>
+  	<span class="nt">&#34;commands&#34;</span><span class="p">:</span> <span class="p">[</span>
+  		<span class="p">{</span>
+  			<span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;extension.helloWorld&#34;</span><span class="p">,</span>
+  			<span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;Hello World&#34;</span>
+  		<span class="p">}</span>
+  	<span class="p">]</span>
+  <span class="p">}</span></code></pre></div>
+<ul>
+<li><code>vscode.commands.registerCommand</code></li>
+</ul>
+
+<p>This is the VSC API which binds a function with the command ID <code>extension.helloWorld</code>.</p>
+
+<p>In the example above, the command <code>extension.helloWorld</code> is registered with a function of lambda expression</p>
+
+    </article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://haobogu.github.io/tags/vscode"><span class="tag">Vscode</span></a></li>
+        
+          <li><a href="https://haobogu.github.io/tags/extension"><span class="tag">Extension</span></a></li>
+        
+          <li><a href="https://haobogu.github.io/tags/typescript"><span class="tag">Typescript</span></a></li>
+        
+          <li><a href="https://haobogu.github.io/tags/node.js"><span class="tag">Node.js</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 Haobo&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="https://haobogu.github.io/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>
