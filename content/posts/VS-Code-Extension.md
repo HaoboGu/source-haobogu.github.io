@@ -1,5 +1,5 @@
 ---
-title: "VS Code Extension"
+title: "VS Code Extension Development(1) - Get Started"
 author: "Haobo Gu"
 tags: ["vscode", "extension", "typescript", "node.js"]
 date: 2019-10-12T17:09:33+08:00
