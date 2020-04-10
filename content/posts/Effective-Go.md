@@ -4,10 +4,8 @@ author: "Haobo Gu"
 tags: [go]
 date: 2020-04-10T17:28:08.734127+08:00
 draft: false
-summary: 
+summary: Learn effective go
 ---
-# Effective Go
-
 ## 命名
 
 变量/常量命名：驼峰
