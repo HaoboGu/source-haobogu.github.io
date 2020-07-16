@@ -4,7 +4,7 @@ author: "Haobo Gu"
 tags: ["code completion", "paper note"]
 date: 2020-07-16T15:16:28.899251+08:00
 draft: false
-summary: 
+summary: Paper note on A Self-Attentional Neural Architecture for Code Completion with Multi-Task Learning
 ---
 # A Self-Attentional Neural Architecture for Code Completion with Multi-Task Learning
 
