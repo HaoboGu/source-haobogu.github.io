@@ -32,7 +32,7 @@ Contribution：
 
 ## Objective: Permutation Language Modeling
 
-如果序列$\textbf{x} = [x_1, ...,x_T]$, 那么一共会有T!种排列方式，记为$Z_T$。那么，$z_t$和$\textbf{z}_{<t}$就是permutation$\textbf{z}\in Z_t$中的第t个元素，和前t-1个元素（在原始序列的的位置）
+如果序列$\textbf{x} = [x_1, ...,x_T]$, 那么一共会有T!种排列方式，记为 $Z_T$ 。那么， $z_t$ 和 $\textbf{z}_{<t}$ 就是permutation$\textbf{z}\in Z_t$中的第t个元素，和前t-1个元素（在原始序列的的位置）
 
 那么，建模的目标就可以设置为：
 
