@@ -23,7 +23,7 @@ install:
   
 script:
   # 运行hugo命令
-  - hugo -t hugo-nuo
+  - hugo -t meme
 
 deploy:
    provider: pages # 重要，指定这是一份github pages的部署配置
