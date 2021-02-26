@@ -4,8 +4,9 @@ author: "Haobo Gu"
 tags: [paper-note, code-completion]
 date: 2021-02-10T17:28:08+08:00
 draft: false
-summary: IntelliCode Compose: Code Generation using Transformer
+summary: IntelliCode Compose - Code Generation using Transformer
 ---
+
 ## Introduction
 
 Main contributions:
