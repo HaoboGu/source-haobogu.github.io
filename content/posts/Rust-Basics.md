@@ -233,7 +233,7 @@ let mark_2 = Grades('B', 'A', 'A', 'C', 3.25);
 
 ### 枚举
 
-关键字`enum`。需要注意的是，Rust的枚举类型中，每个值的类型可以不同。这样的话，在使用某个枚举类型时，必须接受其下面所有值的类型：
+关键字`enum`。需要注意的是，Rust的枚举中，每个值可以有不同的类型。这样的话，在使用某个枚举类型时，必须接受其下面所有值的类型：
 
 ```rust
 enum WebEvent {
@@ -246,9 +246,35 @@ enum WebEvent {
 }
 ```
 
+一般来说，我们不直接在枚举里面定义一个复杂的结构，而是在外面定义好相应的结构体之后，在枚举里面使用：
+
+```rust
+// Define a tuple struct
+struct KeyPress(String, char);
+
+// Define a classic struct
+struct MouseClick { x: i64, y: i64 }
+
+// Redefine the enum variants to use the data from the new structs
+// Update the page Load variant to have the boolean type
+enum WebEvent { WELoad(bool), WEClick(MouseClick), WEKeys(KeyPress) }
+```
+
+在使用枚举时，采用运算符`::`来指定具体的枚举值：
+
+```rust
+// bool
+let we_load = WebEvent::WELoad(true);
+
+// Instantiate a MouseClick struct and bind the coordinate values
+let click = MouseClick { x: 100, y: 250 };
+// Set the WEClick variant to use the data in the click struct
+let we_click = WebEvent::WEClick(click);
+```
 
 
-## Rust函数
+
+### Rust函数
 
 Rust的函数使用关键字`fn`声明：
 
@@ -258,7 +284,13 @@ fn main() {
 }
 ```
 
-函数的返回值由`->`确定
+函数的返回值由`->`确定，参数填在`()`里面，使用`:`指定类型：
+
+```rust
+fn is_divisible_by(dividend: u32, divisor: u32) -> bool {
+  ...
+}
+```
 
 在函数体中，**大多数**的语句是分号`;`结尾的。如果不是分号结尾的语句，则有可能是函数的**返回值**！
 
@@ -267,4 +299,134 @@ fn getFive() -> i32 {
     5
 }
 
+// 等同于
+fn getFive() -> i32 {
+    return 5;
+}
 ```
+
+
+
+###集合类型
+
+Rust中自带了一些常见的集合类型：数组、向量、HashMap等
+
+#### 数组
+
+Rust中的数组是具有**相同数据类型**和**固定长度**的对象集合。定义和索引：
+
+```rust
+// Declare array, initialize all values, compiler infers length = 7
+let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+// Declare array, first value = "0", length = 5
+let bytes = [0; 5];
+
+// Set first day of week
+let first  = days[0];
+```
+
+#### 向量
+
+Rust中的向量是**长度可变**的**相同数据类型**的对象集合。向量声明：
+
+```rust
+// Declare vector, first value = "0", length = 5
+let zeroes = vec![0; 5];
+// Create empty vector, declare vector mutable so it can grow and shrink
+let mut fruit = Vec::new();
+```
+
+注意，代码中的`vec!`是一个**宏**，而`Vec::new()`为调用`Vec`中的`new()`方法
+
+索引、添加和删除值：
+
+```rust
+fruit.push("Apple");
+fruit.push("Banana");
+fruit.push("Cherry");
+let cherry = fruit.pop();
+let apple = fruit[0];
+let banana = fruit[-1];
+```
+
+#### HashMap
+
+Rust中的HashMap定义在标准库中，因此在使用前需要使用
+
+```rust
+use std::collections::HashMap;
+```
+
+引入。`use`关键字和其他语言中的`import`类似，用于导入。
+
+初始化，添加、获取、删除元素：
+
+```rust
+let mut reviews: HashMap<String, String> = HashMap::new();
+
+reviews.insert("Ancient Roman History".to_string(), "Very accurate.".to_string());
+reviews.insert("Programming in Rust".to_string(), "Great examples.".to_string());
+
+let key: &str = "Programming in Rust";
+let v = reviews.get(key);
+
+reviews.remove(key);
+```
+
+### 循环
+
+Rust中，提供了三种循环：`loop`, `while`, `for`
+
+#### loop
+
+Rust中的`loop`为无限循环，只能使用`break`跳出。使用`break`时，还能顺带返回一个值：
+
+```rust
+let mut counter = 1;
+// stop_loop is set when loop stops
+let stop_loop = loop {
+    counter *= 2;
+    if counter > 100 {
+        // Stop loop, return counter value
+        break counter;
+    }
+};
+// Loop should break when counter = 128
+println!("Break the loop at counter = {}.", stop_loop);
+```
+
+如果`loop`中有多个`break`，那么每处返回的类型需要一致。
+
+#### while
+
+和其他语言的`while`没什么区别：
+
+```rust
+while condition {
+  ...
+}
+```
+
+#### for
+
+对于数组之类的数据结构，可以用`for <value> in <list>`
+
+```rust
+let big_birds = ["ostrich", "peacock", "stork"];
+for bird in big_birds {
+  ...
+}
+// 也可使用iter()
+for bird in big_birds.iter() {
+  ...
+}
+```
+
+另外一种常见的用法是`for idx in a...b`，其中，`a...b`表示从`a`开始，步长为1迭代到`b`（不包含b)：
+
+```rust
+for number in 0..5 {
+    // 0, 1, 2, 3, 4
+}
+```
+
