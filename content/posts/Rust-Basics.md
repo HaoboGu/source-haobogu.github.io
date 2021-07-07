@@ -4,7 +4,7 @@ author: "Haobo Gu"
 tags: [rust]
 date: 2021-07-07T10:28:08+08:00
 draft: false
-summary: Notes about learning rust(in Chinese)
+summary: Learning rust(in Chinese)
 ---
 
 # Rust Basics
@@ -429,4 +429,106 @@ for number in 0..5 {
     // 0, 1, 2, 3, 4
 }
 ```
+
+## 错误处理
+
+### panic
+
+panic 是 Rust 中最简单的错误处理机制。发生panic时，Rust会输出一条错误消息、清理资源，然后退出程序。可以调用`panic!`宏来使当前进程panic。一般来说，只有在程序遇到无论如何都恢复不了的错误时使用：
+
+```rust
+fn main() {
+    panic!("Farewell!");
+}
+```
+
+### Option
+
+在Rust中，使用`Option<T>`处理可能为空的值。其他语言中，会有`null`, `nil`, `None`之类的值表示空值，在Rust中，除了与其他语言（比如C）交互时，其他情况下基本都不会使用`null`。
+
+`Option<T>`是一个带泛型的枚举：
+
+```rust
+enum Option<T> {
+    None,     // The value doesn't exist
+    Some(T),  // The value exists
+}
+```
+
+那什么时候会用到Option呢？下面就是一个例子：
+
+> 在前面的单元中，我们提到尝试访问矢量的不存在的索引会导致程序 `panic`，但你可以通过使用 `Vec::get` 方法（该方法返回 `Option` 类型，而不是 panic）来避免这种情况。 如果该值存在于指定的索引处，系统会将其包装在 `Option::Some(value)` 变体中。 如果索引超出界限，则它会改为返回 `Option::None` 值。
+>
+> ```rust
+> let fruits = vec!["banana", "apple", "coconut", "orange", "strawberry"];
+> 
+> // pick the first item:
+> let first = fruits.get(0);
+> println!("{:?}", first); // Some("banana")
+> 
+> // pick the 99th item, which is non-existent:
+> let non_existent = fruits.get(99);
+> println!("{:?}", non_existent); // None
+> ```
+
+Rust提供了多种方法来处理Option值：
+
+1. `match`：类似其他语言的switch，针对Option中的每种情况分别处理
+
+   ```rust
+   match Option<T> {
+     Some(value) => { ... }
+     None => {... }
+   }
+   
+   // 下面是一个实例
+   let fruits = vec!["banana", "apple", "coconut", "orange", "strawberry"];
+   for &index in [0, 2, 99].iter() {
+       // fruits.get(index)返回一个Option<String>
+       match fruits.get(index) {
+           Some(&"coconut") => println!("Coconuts are awesome!!!"),
+           Some(fruit_name) => println!("It's a delicious {}!", fruit_name),
+           None => println!("There is no fruit! :("),
+       }
+   }
+   ```
+
+2. `if let`：如果只关心Option中的某一个特定值
+
+   ```rust
+   let a_number: Option<u8> = Some(7);
+   
+   // 如果我只关心这个数字为7的情况，此时适合使用if let
+   if let Some(7) = a_number {
+       println!("That's my lucky number!");
+   }
+   ```
+
+3. `unwrap()`/`expect()`：直接获取Option中的Some值，但是Option为None，会直接panic。区别在于`expect()`可以自定义panic的报错信息
+
+   ```rust
+   let a: i32 = Some(1).unwrap();
+   
+   let empty_gift: Option<&str> = None;
+   empty_gift.unwrap(); // panic!
+   empty_gift.expect("the gift is none!"); // panic with given message!
+   //    thread 'main' panicked at 'the gift is none!'
+   ```
+
+4. `unwrap_or(<default_value>)`：如果Option为None，则使用默认值
+
+### Result
+
+Rust的`Option`提供了对空值的处理，而对于可能出现的程序的错误，Rust提供了`Result<T, E>`枚举来处理：
+
+```rust
+enum Result<T, E> {
+    Ok(T):  // A value T was obtained.
+    Err(E): // An error of type E was encountered instead.
+}
+```
+
+`Result`枚举也非常好理解：要么程序运行OK，返回一个T类型的值；要么程序运行Err，返回一个E类型的错误。和`Option`类似，`Result`也提供了`unwrap()`和`expect()`方法直接获取`OK()`包的值。如果返回的是`Err`，则会panic。
+
+能够用于`Option`的`match`和`if let`，也可以用于`Result`
 
