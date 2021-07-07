@@ -4,7 +4,7 @@ author: "Haobo Gu"
 tags: [rust]
 date: 2021-07-07T10:28:08+08:00
 draft: false
-summary: Learning rust(in Chinese)
+summary: Rust language basics
 ---
 
 # Rust Basics
