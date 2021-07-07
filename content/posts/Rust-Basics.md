@@ -1,5 +1,3 @@
-# Rust Basics
-
 ---
 title: "Rust Basics"
 author: "Haobo Gu"
@@ -8,6 +6,8 @@ date: 2021-07-07T10:28:08+08:00
 draft: false
 summary: Notes about learning rust(in Chinese)
 ---
+
+# Rust Basics
 
 学习[微软Rust教程](https://docs.microsoft.com/zh-cn/learn/paths/rust-first-steps/)的笔记。
 
