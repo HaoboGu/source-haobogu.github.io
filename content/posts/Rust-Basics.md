@@ -1,13 +1,13 @@
 # Rust Basics
 
-```
 ---
 title: "Rust Basics"
 author: "Haobo Gu"
 tags: [rust]
-date: 2021-07-07T01:00:50.275944+08:00
+date: 2021-07-07T10:28:08+08:00
+draft: false
+summary: Notes about learning rust(in Chinese)
 ---
-```
 
 学习[微软Rust教程](https://docs.microsoft.com/zh-cn/learn/paths/rust-first-steps/)的笔记。
 
