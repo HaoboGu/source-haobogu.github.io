@@ -1,5 +1,5 @@
 ---
-title: "Rust Basics - 2"
+title: "Learning Rust - 2"
 author: "Haobo Gu"
 tags: [rust]
 date: 2021-07-07T16:55:48+08:00
@@ -8,7 +8,7 @@ draft: false
 
 ---
 
-# Rust Basics - 2
+# Learning Rust - 2
 
 ## 所有权和借用
 

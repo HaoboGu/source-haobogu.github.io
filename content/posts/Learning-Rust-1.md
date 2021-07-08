@@ -1,5 +1,5 @@
 ---
-title: "Rust Basics"
+title: "Learning Rust - 1"
 author: "Haobo Gu"
 tags: [rust]
 date: 2021-07-07T10:28:08+08:00
@@ -7,7 +7,7 @@ draft: false
 summary: Rust language basics
 ---
 
-# Rust Basics
+# Learning Rust - 1
 
 学习[微软Rust教程](https://docs.microsoft.com/zh-cn/learn/paths/rust-first-steps/)的笔记。
 
