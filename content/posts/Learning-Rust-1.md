@@ -231,6 +231,23 @@ let mark_1 = Grades('A', 'A', 'B', 'A', 3.75);
 let mark_2 = Grades('B', 'A', 'A', 'C', 3.25);
 ```
 
+当然，我们也可以为结构体定义成员函数，使用`impl`关键字即可
+
+```rust
+// Classic struct with named fields
+struct Student { name: String, level: u8, pass: bool }
+impl Student {
+    fn get_name(&self) -> &String {
+        return &self.name;
+    }
+}
+
+fn main() {
+    let s = Student{name: "n".to_string(), level:1, pass:true};
+    println!("{}", s.get_name());
+}
+```
+
 ### 枚举
 
 关键字`enum`。需要注意的是，Rust的枚举中，每个值可以有不同的类型。这样的话，在使用某个枚举类型时，必须接受其下面所有值的类型：
