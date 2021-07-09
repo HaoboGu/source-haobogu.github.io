@@ -3,7 +3,7 @@ title: "Learning Rust - 2"
 author: "Haobo Gu"
 tags: [rust]
 date: 2021-07-07T16:55:48+08:00
-summary: Ownership, borrowing and lifetime in rust
+summary: Ownership, borrowing and lifetime in Rust
 draft: false
 
 ---

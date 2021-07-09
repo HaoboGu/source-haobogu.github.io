@@ -3,8 +3,8 @@ title: "Learning Rust - 4"
 author: "Haobo Gu"
 tags: [rust]
 date: 2021-07-09T10:18:19+08:00
-summary: 
-draft: true
+summary: Module and testing in Rust
+draft: false
 ---
 
 # Learning Rust - 4

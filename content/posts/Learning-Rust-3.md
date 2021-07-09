@@ -3,7 +3,7 @@ title: "Learning Rust - 3"
 author: "Haobo Gu"
 tags: [rust]
 date: 2021-07-08T11:29:31+08:00
-summary: Traits and generics in rust
+summary: Traits and generics in Rust
 draft: false
 ---
 
